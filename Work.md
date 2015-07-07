@@ -1,6 +1,6 @@
 #**2015-07-06**#
 
-####온습도 센서와 LCD 모듈을 이용하여, LCD에 온도 표시하기
+#### 온습도 센서와 LCD 모듈을 이용하여, LCD에 온도 표시하기
 
 sht20.py 과 ip_adrr.py 를 참고하여 구현
 [sht20_lcd.py](https://github.com/hello920922/mgpark_keti/blob/master/sht20_lcd.py "sht20_lcd.py")
@@ -16,3 +16,10 @@ RaspberryPi가 켜질 때 자동으로 실행되는 스크립트
 
 #### [command] &
 뒤에 &를 붙이면 백그라운드 앱으로 실행됨.
+
+
+#**2015-07-07**#
+
+#### 07-06에 했던 예제에 Co2 센서를 결합
+
+BereCO2.py 을 참고하여 구현
