@@ -1,6 +1,6 @@
-#**2015-07-06**#
+#**-2015-07-06**#
 
-### 온습도 센서와 LCD 모듈을 이용하여, LCD에 온도 표시하기
+###>온습도 센서와 LCD 모듈을 이용하여, LCD에 온도 표시하기
 
 sht20.py 과 ip_adrr.py 를 참고하여 구현
 [sht20_lcd.py](https://github.com/hello920922/mgpark_keti/blob/master/sht20_lcd.py "sht20_lcd.py")
