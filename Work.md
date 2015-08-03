@@ -32,18 +32,18 @@
 #**2015-08-03**#
 
 > ### Markdown Systax
->     ####http://scriptogr.am/myevan/post/markdown-syntax-guide-for-scriptogram
+>   ####http://scriptogr.am/myevan/post/markdown-syntax-guide-for-scriptogram
 >     마크다운에 대한 기본적인 사용법이 적혀있음.  
->     ####http://www.tablesgenerator.com
+>   ####http://www.tablesgenerator.com
 >     마크다운 및 다른 언어에 테이블을 만들면 코드로 변환시켜주는 사이트.
 
 > ### /boot/cmdline.txt
 >     맨 끝에 ip=xxx.xxx.xxx.xxx를 붙이면 해당 아이피를 갖게됨.
 
 > ### XlsxWriter : Python을 이용하여 Excel File을 만드는 프로그램
->     ####[Web Link](https://xlsxwriter.readthedocs.org/#)  
+> ####[Web Link](https://xlsxwriter.readthedocs.org/#)  
   
->     ####Install :  
+> ####Install :  
 >     git clone https://github.com/jmcnamara/XlsxWriter.git  
 >     cd XlsxWriter  
 >     sudo python setup.py install  
