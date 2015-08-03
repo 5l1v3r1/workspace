@@ -40,6 +40,9 @@
 > ### /boot/cmdline.txt
 >     맨 끝에 ip=xxx.xxx.xxx.xxx를 붙이면 해당 아이피를 갖게됨.
 
+> ### 라즈베리파이 초기설정 스크립트
+>     vim 설치, APM설치 등의 [스크립트](https://github.com/hello920922/InitializeScript/)를 구현
+
 > ### XlsxWriter : Python을 이용하여 Excel File을 만드는 프로그램
 > ####[Web Link](https://xlsxwriter.readthedocs.org/#)  
   
