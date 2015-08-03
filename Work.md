@@ -27,15 +27,15 @@
 
 #**~2015-07-23**#
 
-> ### NFC 모듈 조사, 각 언어로 라즈베리파이 코딩, Home Raspberry Pi에 서버구축
+>     NFC 모듈 조사, 각 언어로 라즈베리파이 코딩, Home Raspberry Pi에 서버구축
 
 #**2015-08-03**#
 
 > ### Markdown Systax
 >     - http://scriptogr.am/myevan/post/markdown-syntax-guide-for-scriptogram
->     마크다운에 대한 기본적인 사용법이 적혀있음.  
+>       마크다운에 대한 기본적인 사용법이 적혀있음.  
 >     - http://www.tablesgenerator.com
->     마크다운 및 다른 언어에 테이블을 만들면 코드로 변환시켜주는 사이트.
+>       마크다운 및 다른 언어에 테이블을 만들면 코드로 변환시켜주는 사이트.
 
 > ### /boot/cmdline.txt
 >     맨 끝에 ip=xxx.xxx.xxx.xxx를 붙이면 해당 아이피를 갖게됨.
