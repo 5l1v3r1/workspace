@@ -36,9 +36,9 @@ BereCO2.py 을 참고하여 구현
 마크다운에 대한 기본적인 사용법이 적혀있음.
 
 #### XlsxWriter : Python을 이용하여 Excel File을 만드는 프로그램
-[Web Link](https://xlsxwriter.readthedocs.org/#)
-Install :
-
-git clone https://github.com/jmcnamara/XlsxWriter.git
-cd XlsxWriter
-sudo python setup.py install
+[Web Link](https://xlsxwriter.readthedocs.org/#)  
+  
+Install :  
+git clone https://github.com/jmcnamara/XlsxWriter.git  
+cd XlsxWriter  
+sudo python setup.py install  
