@@ -2,8 +2,8 @@
 
 > ###온습도 센서와 LCD 모듈을 이용하여, LCD에 온도 표시하기
 
-> > sht20.py 과 ip_adrr.py 를 참고하여 구현
-> > [sht20_lcd.py](https://github.com/hello920922/mgpark_keti/blob/master/sht20_lcd.py "sht20_lcd.py")
+>     sht20.py 과 ip_adrr.py 를 참고하여 구현
+>     [sht20_lcd.py](https://github.com/hello920922/mgpark_keti/blob/master/sht20_lcd.py "sht20_lcd.py")
 
 > ### /home/user/.bashrc
 > > user가 로그인하면 자동으로 실행되는 스크립트
