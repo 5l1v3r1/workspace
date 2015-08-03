@@ -6,7 +6,7 @@
 >     [sht20_lcd.py](https://github.com/hello920922/mgpark_keti/blob/master/sht20_lcd.py "sht20_lcd.py")
 
 > ### /home/user/.bashrc
-> > user가 로그인하면 자동으로 실행되는 스크립트
+>     user가 로그인하면 자동으로 실행되는 스크립트
 
 > ### /etc/rc.local
 > > RaspberryPi가 켜질 때 자동으로 실행되는 스크립트
