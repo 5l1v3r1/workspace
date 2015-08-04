@@ -31,7 +31,7 @@
 
 #**2015-08-03**#
 
-> ### Markdown Systax
+> ### Markdown Syntax
 > - http://scriptogr.am/myevan/post/markdown-syntax-guide-for-scriptogram  
 >  마크다운에 대한 기본적인 사용법이 적혀있음.  
 > - http://www.tablesgenerator.com  
