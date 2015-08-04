@@ -74,5 +74,11 @@
 >     sudo mkdir /etc/nfc/devices.d  
 >     sudo cp contrib/libnfc/pn532_uart_on_rpi.conf.sample /etc/nfc/devices.d/pn532_uart_on_rpi.conf  
 >     sudo vi /etc/nfc/devices.d/pn532_uart_on_rpi.conf  
->     맨 밑에 아래의 문장 추가
->     allow_intrusive_scan = true
+>     맨 밑에 아래의 문장 추가  
+>     allow_intrusive_scan = true  
+> #### Run Config  
+>     sudo apt-get install autoconf  
+>     sudo apt-get install libtool  
+>     sudo apt-get install libpcsclite-dev libusb-dev  
+>     autoreconf -vis  
+>     ./configure --with-drivers=pn532_uart --sysconfdir=/etc --prefix=/usr  
