@@ -60,6 +60,14 @@
 >     workbook.close()  
 
 #**2015-08-04**#
+> ### 실행파일을 어느 디렉토리에서나 사용할 수 있도록 명령어 등록하는 방법  
+>     vi /etc/profile  
+>     PATH에 지정된 디렉토리 중 하나 선택.  
+>     cd [선택한 디렉토리 절대경로]  
+>     ln [원본파일 절대경로] [링크파일 이름]  
+>     sudo reboot  
+>     cd  
+>     [링크파일 이름]으로 테스트  
 > ### PN532 라이브러리 설치  
 > #### Setting Raspi
 >     sudo raspi-config  
@@ -82,6 +90,6 @@
 >     sudo apt-get install libpcsclite-dev libusb-dev  
 >     autoreconf -vis  
 >     ./configure --with-drivers=pn532_uart --sysconfdir=/etc --prefix=/usr  
-> #### Build
->     sudo make clean
->     sudo make install all
+> #### Build  
+>     sudo make clean  
+>     sudo make install all  
