@@ -60,3 +60,19 @@
 >     workbook.close()  
 
 #**2015-08-04**#
+> ### PN532 라이브러리 설치  
+> #### Setting Raspi
+>     sudo raspi-config  
+>     disable uart (Select Serial, Select No)  
+>     sudo reboot  
+> #### Download libnfc  
+>     cd /home/pi/  
+>     git clone https://github.com/nfc-tools/libnfc.git  
+> #### Setup libnfc for the Pi  
+>     cd libnfc/  
+>     sudo mkdir /etc/nfc  
+>     sudo mkdir /etc/nfc/devices.d  
+>     sudo cp contrib/libnfc/pn532_uart_on_rpi.conf.sample /etc/nfc/devices.d/pn532_uart_on_rpi.conf  
+>     sudo vi /etc/nfc/devices.d/pn532_uart_on_rpi.conf  
+>     맨 밑에 아래의 문장 추가
+>     allow_intrusive_scan = true
