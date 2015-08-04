@@ -93,3 +93,9 @@
 > #### Build  
 >     sudo make clean  
 >     sudo make install all  
+> #### Example  
+> - http://www.libnfc.org/api/examples_page.html  
+  
+> ### Raspi에 Database 연동하기  
+>     sudo apt-get install libmysql-java  
+>     
