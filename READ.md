@@ -82,3 +82,6 @@
 >     sudo apt-get install libpcsclite-dev libusb-dev  
 >     autoreconf -vis  
 >     ./configure --with-drivers=pn532_uart --sysconfdir=/etc --prefix=/usr  
+> #### Build
+>     sudo make clean
+>     sudo make install all
