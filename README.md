@@ -161,10 +161,8 @@
 > - id_rsa.pub : publie-key로 remote server에 이 파일을 보내주면 된다.  
 
 > #### SSH-Key 추가 방법
+>     mv ./id_ras.pub ~/.ssh/[client name].pub
+>     cat ~/.ssh/[client name].pub >> ~/.ssh/authorized_keys
 > 1. client로 받은 id_ras.pub를 client이름으로 변경(필수는 아니지만 구분하기 쉬움)  
 > 2. 변경한 id_ras.pub 파일을 ~/.ssh로 이동  
-
->     mv ./id_ras.pub ~/.ssh/[client name].pub
 > 3. authorized_keys에 client로 받은 id_ras.pub의 내용을 추가  
-
->     cat ~/.ssh/[client name].pub >> ~/.ssh/authorized_keys
