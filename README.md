@@ -109,7 +109,7 @@
 >     export CLASSPATH  
 >     sudo reboot  
 
-#**2015-08-05**#  
+#**2015-08-05**#
 
 > ### 환경변수
 > - JAVA_HOME : 자바가 설치되어 있는 경로
