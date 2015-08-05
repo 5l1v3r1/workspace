@@ -146,15 +146,15 @@
 
 > #### SSH-Key 생성  
 >     ssh-keygen
+>     cd ~/.ssh
+>     cat id_rsa.pub
+
 > - Enter file in which to save the key (/home/pi/.ssh/id_rsa):  
 > SSH-Key가 저장될 공간을 선택하는 것인데, 로그인한 사용자의 홈디렉터리가 기본적이다.  
 > - Enter passphrase (empty for no passphrase):  
 > - Enter same passphrase again:  
 > SSH-Key 비밀번호를 입력하는 것인데, 자동로그인을 위해서는 그냥 enter를 치면 된다.  
 > 하지만 보안의 흠이 생길 수 있으니, 주의  
-
->     cd ~/.ssh
->     cat id_rsa.pub
 
 > #### id_rsa & id_rsa.pub
 > - id_rsa : private-key로써 절대 공개되어서는 안된다.  
