@@ -98,11 +98,40 @@
   
 > ### Raspi에 Database 연동하기  
 >     sudo apt-get install libmysql-java  
+>     cd $JAVA_HOME/lib
+>     mkdir java
 >     cd /usr/share/java  
->     cp mysql-connector-java-x.x.xx.jar $JAVA_HOME/lib/mysql-connector-java.jar  
+>     cp mysql-connector-java-x.x.xx.jar $JAVA_HOME/lib/java/mysql-connector-java.jar  
 >     sudo vi /etc/profile 혹은 bashrc (개인 계정이면 홈디렉터리로)  
 >     JAVA_HOME 밑에 다음의 내용추가  
   
->     CLASSPATH=$CLASSPATH:$JAVA_HOME/lib/mysql-connector-java.jar:.  
+>     CLASSPATH=$CLASSPATH:$JAVA_HOME/lib/java/*
 >     export CLASSPATH  
->     sudo reboot
+>     sudo reboot  
+
+#**2015-08-05**#
+
+> ### 환경변수  
+> - JAVA_HOME : 자바가 설치되어 있는 경로  
+> - PATH : 자바명령어가 있는 경로  
+> - JAVA_OPT : 자바를 실행할 때의 옵션.(설정해두면 일일이 치지 않아도 항상 이 명령어가 작동)  
+> - CLASSPATH : 자바를 실행할 때, jar 파일등의 라이브러리를 지정해주는 경로.
+
+> ### 라이브러리 설정
+> JAVA_HOME이 설정되어 있는 상태에서 실행.
+
+> 1. CLASSPATH=$CLASSPATH:$JAVA_HOME/lib/java/*  
+> 2. $JAVA_HOME/lib/java/ 디렉터리에 jar파일등의 라이브러리들을 넣어두면 라이브러리를 자동으로 포함하여 실행.  
+> - 자원낭비가 심하지 않도록 라즈베리파이를 실행할 때 꼭 필요한 것들만 넣는 것이 좋음. (ex)database, gpio 등  
+
+> ### Raspi에 wiringPi 및 pi4j 설치방법
+> #### Install wiringPi
+>     git clone git://git.drogon.net/wiringPi
+>     cd wiringPi
+>     ./build
+
+> #### Install pi4j
+>     http://pi4j.com/download.html 에서 최신버전 확인
+>     wget http://get.pi4j.com/download/pi4j-x.x.deb
+>     sudo dpkg -i pi4j-x.x.deb
+>     sudo cp /opt/pi4j/lib/* $JAVA_HOME/lib/java/
