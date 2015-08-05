@@ -107,8 +107,10 @@
   
 >     CLASSPATH=$CLASSPATH:$JAVA_HOME/lib/java/*
 >     export CLASSPATH  
->     sudo reboot
-#**2015-08-05**#
+>     sudo reboot  
+
+#**2015-08-05**#  
+
 > ### 환경변수
 > - JAVA_HOME : 자바가 설치되어 있는 경로
 > - PATH : 자바명령어가 있는 경로
