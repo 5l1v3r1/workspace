@@ -99,7 +99,7 @@
 > ### Raspi에 Database 연동하기  
 >     sudo apt-get install libmysql-java  
 >     cd $JAVA_HOME/lib
->     sudo mkdir java
+>     mkdir java
 >     cd /usr/share/java  
 >     cp mysql-connector-java-x.x.xx.jar $JAVA_HOME/lib/java/mysql-connector-java.jar  
 >     sudo vi /etc/profile 혹은 bashrc (개인 계정이면 홈디렉터리로)  
