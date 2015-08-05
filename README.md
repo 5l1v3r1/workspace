@@ -123,3 +123,15 @@
 > 1. CLASSPATH=$CLASSPATH:$JAVA_HOME/lib/java/*  
 > 2. $JAVA_HOME/lib/java/ 디렉터리에 jar파일등의 라이브러리들을 넣어두면 라이브러리를 자동으로 포함하여 실행.  
 > - 자원낭비가 심하지 않도록 라즈베리파이를 실행할 때 꼭 필요한 것들만 넣는 것이 좋음. (ex)database, gpio 등  
+
+> ### Raspi에 wiringPi 및 pi4j 설치방법
+> #### Install wiringPi
+>     git clone git://git.drogon.net/wiringPi
+>     cd wiringPi
+>     ./build
+
+> #### Install pi4j
+>     http://pi4j.com/download.html 에서 최신버전 확인
+>     wget http://get.pi4j.com/download/pi4j-x.x.deb
+>     sudo dpkg -i pi4j-x.x.deb
+>     sudo cp /opt/pi4j/lib/* $JAVA_HOME/lib/java/
