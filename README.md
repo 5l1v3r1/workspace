@@ -118,7 +118,7 @@
 > - CLASSPATH : 자바를 실행할 때, jar 파일등의 라이브러리를 지정해주는 경로.
 
 > ### 라이브러리 설정
-> #### JAVA_HOME이 설정되어 있는 상태에서 실행.
+> JAVA_HOME이 설정되어 있는 상태에서 실행.
 
 > 1. CLASSPATH=$CLASSPATH:$JAVA_HOME/lib/java/*  
 > 2. $JAVA_HOME/lib/java/ 디렉터리에 jar파일등의 라이브러리들을 넣어두면 라이브러리를 자동으로 포함하여 실행.  
