@@ -152,6 +152,7 @@
 > - Enter same passphrase again:  
 > SSH-Key 비밀번호를 입력하는 것인데, 자동로그인을 위해서는 그냥 enter를 치면 된다.  
 > 하지만 보안의 흠이 생길 수 있으니, 주의  
+
 >     cd ~/.ssh
 >     cat id_rsa.pub
 
@@ -162,6 +163,8 @@
 > #### SSH-Key 추가 방법
 > 1. client로 받은 id_ras.pub를 client이름으로 변경(필수는 아니지만 구분하기 쉬움)  
 > 2. 변경한 id_ras.pub 파일을 ~/.ssh로 이동  
+
 >     mv ./id_ras.pub ~/.ssh/[client name].pub
-> 2. authorized_keys에 client로 받은 id_ras.pub의 내용을 추가  
+> 3. authorized_keys에 client로 받은 id_ras.pub의 내용을 추가  
+
 >     cat ~/.ssh/[client name].pub >> ~/.ssh/authorized_keys
