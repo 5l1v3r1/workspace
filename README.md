@@ -135,3 +135,29 @@
 >     wget http://get.pi4j.com/download/pi4j-x.x.deb
 >     sudo dpkg -i pi4j-x.x.deb
 >     sudo cp /opt/pi4j/lib/* $JAVA_HOME/lib/java/
+
+> ### SSH-Key
+> - public-key : remote server에 알려줄 ssh-key
+> - private-key : remote client가 가지고 있을 ssh-key
+> #### SSH-Key가 존재하는지 확인
+>     ls -a ~/.ssh
+>     만약 .ssh 디렉터리가 없다면 SSH-Key가 존재하지 않는 것임.
+> #### SSH-Key 생성
+>     ssh-keygen
+>     Enter file in which to save the key (/home/pi/.ssh/id_rsa):
+>     SSH-Key가 저장될 공간을 선택하는 것인데, 로그인한 사용자의 홈디렉터리가 기본적이다.
+>     Enter passphrase (empty for no passphrase):
+>     Enter same passphrase again:
+>     SSH-Key 비밀번호를 입력하는 것인데, 자동로그인을 위해서는 그냥 enter를 치면 된다.
+>     하지만 보안의 흠이 생길 수 있으니, 주의
+>     cd ~/.ssh
+>     cat id_rsa.pub
+> #### id_rsa & id_rsa.pub
+> - id_rsa : private-key로써 절대 공개되어서는 안된다.
+> - id_rsa.pub : publie-key로 remote server에 이 파일을 보내주면 된다.
+> #### SSH-Key 추가 방법
+> 1. client로 받은 id_ras.pub를 client이름으로 변경(필수는 아니지만 구분하기 쉬움)
+> 2. 변경한 id_ras.pub 파일을 ~/.ssh로 이동
+>     mv ./id_ras.pub ~/.ssh/[client name].pub
+> 2. authorized_keys에 client로 받은 id_ras.pub의 내용을 추가
+>     cat ~/.ssh/[client name].pub >> ~/.ssh/authorized_keys
