@@ -24,4 +24,3 @@ except KeyboardInterrupt :
 finally :
     print "\nExit Program...Goodbye!"
     GPIO.cleanup()
-
