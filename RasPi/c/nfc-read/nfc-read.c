@@ -55,9 +55,11 @@ main(int argc, const char *argv[])
   nfc_modulation nmMifare;
   nmMifare.nmt = NMT_ISO14443A;
   nmMifare.nbr = NBR_106;
-  
-  if (nfc_initiator_select_passive_target(pnd, nmMifare, NULL, 0, &nt) > 0)
+
+  if (nfc_initiator_select_passive_target(pnd, nmMifare, NULL, 0, &nt) > 0){
     print_hex(nt.nti.nai.abtUid, nt.nti.nai.szUidLen);
+    while(nfc_initiator_target_is_present(pnd, NULL)==0){}
+  }
   // Close NFC device
   nfc_close(pnd);
   // Release the context
