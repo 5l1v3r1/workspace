@@ -3,16 +3,24 @@
 
 #include <stdlib.h>
 #include <nfc/nfc.h>
+#include <string.h>
 
-static void
+char *UID;
+
+static void 
 print_hex(const uint8_t *pbtData, const size_t szBytes)
 {
   size_t  szPos;
+  char str[(int)szBytes*2];
+  char temp[2];
+
+  UID = (char*)malloc(szBytes*2);
 
   for (szPos = 0; szPos < szBytes; szPos++) {
-    printf("%02x", pbtData[szPos]);
+    sprintf(temp, "%02x", pbtData[szPos]);
+    strcat(str,temp);
   }
-  printf("\n");
+  strcpy(UID,str);
 }
 
 int
@@ -58,6 +66,7 @@ main(int argc, const char *argv[])
 
   if (nfc_initiator_select_passive_target(pnd, nmMifare, NULL, 0, &nt) > 0){
     print_hex(nt.nti.nai.abtUid, nt.nti.nai.szUidLen);
+    printf("%s\n",UID);
     while(nfc_initiator_target_is_present(pnd, NULL)==0){}
   }
   // Close NFC device
