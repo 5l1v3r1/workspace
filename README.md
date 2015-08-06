@@ -166,3 +166,12 @@
 > 1. client로 받은 id_ras.pub를 client이름으로 변경(필수는 아니지만 구분하기 쉬움)  
 > 2. 변경한 id_ras.pub 파일을 ~/.ssh로 이동  
 > 3. authorized_keys에 client로 받은 id_ras.pub의 내용을 추가  
+
+#**2015-08-06**#
+> ### C CommandLine 실행
+>     #include <stdlib.h>  
+>       
+>     int main(void){
+>         system("[command]");
+>         return 0;
+>     }
