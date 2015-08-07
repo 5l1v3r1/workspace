@@ -218,7 +218,7 @@
 >         }
 >         serveraddr.sin_family = AF_INET;
 >         serveraddr.sin_addr.s_addr = inet_addr(MY_SERVER_IP);
->         serveraddr.sin_port = htons(1126);
+>         serveraddr.sin_port = htons([port number]);
 >     
 >         client_len = sizeof(serveraddr);
 >     
