@@ -203,7 +203,7 @@
 >     #include <unistd.h>
 >     #include <stdlib.h>
 >     
->     #define MY_SERVER_IP "169.254.241.122"
+>     #define MY_SERVER_IP "[Server's host]"
 >     #define MAXLINE 1024
 >     
 >     int main(int argc, char **argv){
