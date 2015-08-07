@@ -35,8 +35,6 @@ mgpark_read(nfc_modulation nmMifare, nfc_device *pnd, nfc_target nt);
 
 void tcp_send();
 
-void tcp_connect();
-
 int server_state();
 
 int main(int argc, char **argv){
@@ -44,8 +42,11 @@ int main(int argc, char **argv){
     return 0;
 }
 
+int server_state(){
+}
+
 void
-tcp_connect(){
+tcp_send(){
     struct sockaddr_in serveraddr;
     int server_sockfd;
     int client_len;
@@ -65,14 +66,8 @@ tcp_connect(){
         perror("coonect error : ");
         return;
     }
-}
-
-void tcp_send(){
-    tcp_connect();
-    memset(buf, 0x00, MAXLINE);
-    strcpy(buf,UID);
-    printf("%s\n%d\n",buf,UID_LEN);
-    if(write(server_sockfd, UID, UID_LEN) <= 0){
+    printf("%s\n%d\n",UID,UID_LEN);
+    if(write(server_sockfd, UID+1, UID_LEN) <= 0){
         perror("write error : ");
         return;
     }
