@@ -237,7 +237,33 @@
 >         return 0;
 >     }
 #**2015-08-10**#
-### Java를 이용하여 Excel 파일 다루기
-> - https://github.com/hello920922/workspace/RasPi/java/Excel\ Library
-#### Excel 읽기
+> ### Java를 이용하여 Excel 파일 다루기
+> - https://github.com/hello920922/workspace/RasPi/java/Excel\ Library.zip  
+>   파일을 다운로드받아서 사용  
+>  
+> #### Excel 읽기
+>     import org.apache.poi.ss.usermodel.Cell;
+>     import org.apache.poi.ss.usermodel.Row;
+>     import org.apache.poi.ss.usermodel.Sheet;
+>     import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 >     
+>     public class Excel_Read {
+>       public static void main(String[] args) {
+>     		XSSFWorkbook wb = null;
+>     		try {
+>     			wb = new XSSFWorkbook("filename.xlsx");
+>     		} catch (IOException e) {
+>     			e.printStackTrace();
+>     		}
+>     		if(wb==null)
+>     			System.exit(0);
+>     		XSSFSheet sh = wb.getSheet("sheet name");
+>     		if(sh==null)
+>     			System.exit(0);
+>     		for(Row row : sh){
+>     			for(Cell cell : row){
+>     				System.out.println(cell.getStringCellValue());
+>     			}
+>     		}
+>     	}
+>     }
