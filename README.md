@@ -262,8 +262,16 @@
 >     			System.exit(0);
 >     		for(Row row : sh){
 >     			for(Cell cell : row){
->     				System.out.println(cell.getStringCellValue());
+>     				switch(cell.getCellType()){
+>     					case Cell.CELL_TYPE_STRING :
+>     						System.out.print(cell.getStringCellValue() + "\t");
+>     						break;
+>     					case Cell.CELL_TYPE_NUMERIC :
+>     						System.out.print(cell.getNumericCellValue() + "\t");
+>     						break;
+>     				}
 >     			}
+>     			System.out.println();
 >     		}
 >     	}
 >     }
