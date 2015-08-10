@@ -244,7 +244,7 @@
 > #### Excel 읽기
 >     import org.apache.poi.ss.usermodel.Cell;
 >     import org.apache.poi.ss.usermodel.Row;
->     import org.apache.poi.ss.usermodel.Sheet;
+>     import org.apache.poi.ss.usermodel.XSSFSheet;
 >     import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 >     
 >     public class Excel_Read {
@@ -273,5 +273,28 @@
 >     			}
 >     			System.out.println();
 >     		}
+>     	}
+>     }
+> #### Excel 쓰기
+>     import org.apache.poi.ss.usermodel.Cell;
+>     import org.apache.poi.ss.usermodel.Row;
+>     import org.apache.poi.xssf.usermodel.XSSFSheet;
+>     import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+>     
+>     public class Excel_Write {
+>     	public static void main(String[] args) {
+>     		XSSFWorkbook wb = null;
+>     		wb = new XSSFWorkbook();
+>     		
+>     		if(wb==null)
+>     			System.exit(0);
+>     		XSSFSheet sh = wb.createSheet("sheet name");
+>     		if(sh==null)
+>     			System.exit(0);
+>     		
+>     		Row row = sh.createRow(0);
+>     		Cell cell = row.createCell(0);
+>     		
+>     		cell.setCellValue("Data");
 >     	}
 >     }
