@@ -20,6 +20,8 @@
 
 char *UID;
 int UID_LEN;
+int UID_SHIFT;
+
 struct sockaddr_in serveraddr;
 int server_sockfd;
 int client_len;
@@ -66,13 +68,14 @@ tcp_send(){
         perror("coonect error : ");
         return;
     }
-    printf("%s\n%d\n",UID,UID_LEN);
-    if(write(server_sockfd, UID+1, UID_LEN) <= 0){
+    printf("%s\n%d\n",UID+UID_SHIFT,UID_LEN);
+    if(write(server_sockfd, UID+UID_SHIFT, UID_LEN) <= 0){
         perror("write error : ");
         return;
     }
     memset(buf, 0x00, MAXLINE);
     close(server_sockfd);
+    free(UID);
 }
 
 void
@@ -91,14 +94,15 @@ print_hex(const uint8_t *pbtData, const size_t szBytes)
   char str[(int)szBytes*2];
   char temp[2];
 
-  UID = (char*)malloc(szBytes*2);
+  UID = (char*)malloc(szBytes*20);
 
   for (szPos = 0; szPos < szBytes; szPos++) {
     sprintf(temp, "%02x", pbtData[szPos]);
     strcat(str,temp);
   }
   strcpy(UID,str);
-  UID_LEN = (int)szBytes*2;
+  UID_SHIFT = strlen(UID) - (int)szBytes*2;
+  UID_LEN = strlen(UID+UID_SHIFT);
 }
 
 void mgpark_nfc_read(int argc)
