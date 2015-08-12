@@ -55,9 +55,6 @@ public class Person implements Serializable{
             System.out.println(Name + " : check out");
             ArrayList<Object> dataarray = new ArrayList<Object>();
             
-            Start = null;
-            End = null;
-            
             if(!IsInstructor){
                 // Case student
                 dataarray.add(new Date());
@@ -79,7 +76,7 @@ public class Person implements Serializable{
                 dataarray.add(Start);
                 dataarray.add(End);
                 
-                SimpleDateFormat format = new SimpleDateFormat("hh");
+                SimpleDateFormat format = new SimpleDateFormat("HH");
                 double hour = Double.parseDouble(format.format(End)) - Double.parseDouble(format.format(Start));
                 format = new SimpleDateFormat("mm");
                 double minute = Double.parseDouble(format.format(End)) - Double.parseDouble(format.format(Start));
@@ -90,7 +87,12 @@ public class Person implements Serializable{
                 System.out.println(Math.round(hour + minute/60));
                 
                 ExcelWriter.Write("We_IT.xlsx", "강사출결", dataarray);
+                
+                State = !State;
             }
+            
+            Start = null;
+            End = null;
         }
     }
 }
