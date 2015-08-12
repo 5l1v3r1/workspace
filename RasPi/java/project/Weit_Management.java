@@ -78,23 +78,23 @@ public class Weit_Management extends JFrame implements ActionListener{
         setJMenuBar(menuBar);
         
         // Add Regiter Menu
-        JMenu mnRegister = new JMenu("µî·Ï");
+        JMenu mnRegister = new JMenu("ë“±ë¡");
         mnRegister.setHorizontalAlignment(SwingConstants.CENTER);
         menuBar.add(mnRegister);
-        regit_Stu = new JMenuItem("¼ö°­»ı");
+        regit_Stu = new JMenuItem("ìˆ˜ê°•ìƒ");
         mnRegister.add(regit_Stu);
         regit_Stu.setHorizontalAlignment(SwingConstants.CENTER);
-        regit_Inst = new JMenuItem("°­»ç");
+        regit_Inst = new JMenuItem("ê°•ì‚¬");
         mnRegister.add(regit_Inst);
         regit_Inst.setHorizontalAlignment(SwingConstants.CENTER);
         regit_Inst.addActionListener(this);
         regit_Stu.addActionListener(this);
         
         // Add Delete Menu
-        JMenu mnDelete = new JMenu("»èÁ¦");
+        JMenu mnDelete = new JMenu("ì‚­ì œ");
         mnDelete.setHorizontalAlignment(SwingConstants.CENTER);
         menuBar.add(mnDelete);
-        del = new JMenuItem("»èÁ¦");
+        del = new JMenuItem("ì‚­ì œ");
         del.setHorizontalAlignment(SwingConstants.CENTER);
         del.addActionListener(this);
         mnDelete.add(del);
@@ -105,24 +105,24 @@ public class Weit_Management extends JFrame implements ActionListener{
         setContentPane(contentPane);
         contentPane.setLayout(null);
         
-        JLabel lblWeitManagement = new JLabel("¿ì¸®IT Ãâ°áÇÁ·Î±×·¥");
-        lblWeitManagement.setFont(new Font("µ¸¿ò", Font.BOLD, 16));
+        JLabel lblWeitManagement = new JLabel("ìš°ë¦¬IT ì¶œê²°í”„ë¡œê·¸ë¨");
+        lblWeitManagement.setFont(new Font("ë‹ì›€", Font.BOLD, 16));
         lblWeitManagement.setHorizontalAlignment(SwingConstants.CENTER);
         lblWeitManagement.setBounds(12, 10, 250, 35);
         contentPane.add(lblWeitManagement);
         
         // Setting about items
-        JLabel lblName = new JLabel("ÀÌ¸§");
+        JLabel lblName = new JLabel("ì´ë¦„");
         lblName.setHorizontalAlignment(SwingConstants.CENTER);
         lblName.setBounds(12, 55, 68, 23);
         contentPane.add(lblName);
         
-        JLabel lblSubject = new JLabel("°ú¸ñ");
+        JLabel lblSubject = new JLabel("ê³¼ëª©");
         lblSubject.setHorizontalAlignment(SwingConstants.CENTER);
         lblSubject.setBounds(12, 88, 68, 23);
         contentPane.add(lblSubject);
         
-        JLabel lblClass = new JLabel("¹İ");
+        JLabel lblClass = new JLabel("ë°˜");
         lblClass.setHorizontalAlignment(SwingConstants.CENTER);
         lblClass.setBounds(12, 121, 68, 23);
         contentPane.add(lblClass);
@@ -155,8 +155,8 @@ public class Weit_Management extends JFrame implements ActionListener{
         }
         else if(event == del){
             accept.State_Delete();
-            JOptionPane.showMessageDialog(null,"»èÁ¦ÇÒ Ä«µå¸¦ ¸®´õ±â¿¡ Ã¼Å©ÇÏ½Ê½Ã¿À.","Check Card",JOptionPane.INFORMATION_MESSAGE);
-            this.setValue("", "", "", "»èÁ¦ÇÒ Ä«µå¸¦ ¸®´õ±â¿¡ Ã¼Å©ÇÏ½Ê½Ã¿À.");
+            JOptionPane.showMessageDialog(null,"ì‚­ì œí•  ì¹´ë“œë¥¼ ë¦¬ë”ê¸°ì— ì²´í¬í•˜ì‹­ì‹œì˜¤.","Check Card",JOptionPane.INFORMATION_MESSAGE);
+            this.setValue("", "", "", "ì‚­ì œí•  ì¹´ë“œë¥¼ ë¦¬ë”ê¸°ì— ì²´í¬í•˜ì‹­ì‹œì˜¤.");
         }
     }
     
