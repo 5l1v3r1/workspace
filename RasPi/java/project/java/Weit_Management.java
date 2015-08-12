@@ -54,7 +54,7 @@ public class Weit_Management extends JFrame implements ActionListener{
     class ClosingHandler extends WindowAdapter{
         @Override
         public void windowClosing(WindowEvent e){
-            System.out.println("Exit");
+            accept.update_hash();
             System.exit(0);
         }
     }
