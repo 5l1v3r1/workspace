@@ -28,6 +28,8 @@ public class TCP_Accept implements Runnable{
     private Hashtable<String, Person> hashtable = null; // key is UID, value is Person Object
     private Weit_Management manager = null;             // variable for handle mainframe
     
+    private CheckTimer checktimer = null;
+    
     public TCP_Accept(Weit_Management manager){
         this.manager = manager;
         
@@ -45,22 +47,16 @@ public class TCP_Accept implements Runnable{
         else{
             hashtable = new Hashtable<String, Person>();
         }
+        
+        checktimer = new CheckTimer(hashtable);
     }
     
     public void update_hash(){
-        File obj = new File("HashPhone.dat");
-        if(obj.exists()){
-            try {
-                ObjectInputStream objin = new ObjectInputStream(new FileInputStream(obj));
-                hashtable = (Hashtable<String, Person>)objin.readObject();
-                objin.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        else{
-            hashtable = new Hashtable<String, Person>();
-        }
+        try{
+            ObjectOutputStream objout  = new ObjectOutputStream(new FileOutputStream("HashPhone.dat"));
+            objout.writeObject(hashtable);
+            objout.close();
+        }catch(Exception e){e.printStackTrace();}
     }
     
     public void State_Delete(){
@@ -111,10 +107,7 @@ public class TCP_Accept implements Runnable{
                     return;
                 }
                 hashtable.remove(UID);
-                
-                ObjectOutputStream objout  = new ObjectOutputStream(new FileOutputStream("HashPhone.dat"));
-                objout.writeObject(hashtable);
-                objout.close();
+                update_hash();
 
                 JOptionPane.showMessageDialog(null, "삭제에 성공하였습니다.", "삭제 성공", JOptionPane.INFORMATION_MESSAGE);
                 delstate = false;
@@ -139,6 +132,7 @@ public class TCP_Accept implements Runnable{
                         check = "정상 하원처리 되었습니다.";
                     }
                     manager.setValue(person.Name, person.Subject, person.ClassName, check);
+                    update_hash();
                 }
                 else{
                     person.Check();
@@ -149,6 +143,7 @@ public class TCP_Accept implements Runnable{
                         check = person.Name + "님 정상 퇴근처리 되었습니다.";
                     }
                     manager.setValue("", "", "", check);
+                    update_hash();
                 }
             }
         }catch(Exception e){
@@ -215,4 +210,5 @@ public class TCP_Accept implements Runnable{
             return false;
         }
     }
+    
 }
