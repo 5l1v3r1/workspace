@@ -301,5 +301,6 @@
 #**2015-08-12**#
 > ### Project 구현.
 > #### 문자보내기
-> http://www.coolsms.co.kr/를 참고
+> http://www.coolsms.co.kr/ 참고
 > #### Python을 이용한 메일보내기
+> [sendMail.py](https://github.com/hello920922/workspace/blob/master/RasPi/python/sendMail/sendMail.py) 참고
