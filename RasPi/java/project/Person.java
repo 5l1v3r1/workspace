@@ -68,7 +68,7 @@ public class Person implements Serializable{
                 dataarray.add(End);
                 dataarray.add("");
                 
-                ExcelWriter.Write("We_IT.xlsx", "¼ö°­»ıÃâ°á", dataarray);
+                ExcelWriter.Write("We_IT.xlsx", "ìˆ˜ê°•ìƒì¶œê²°", dataarray);
                 
                 State = !State;
             }
@@ -89,7 +89,7 @@ public class Person implements Serializable{
                 dataarray.add((double)Math.round(hour + minute/60));
                 System.out.println(Math.round(hour + minute/60));
                 
-                ExcelWriter.Write("We_IT.xlsx", "°­»çÃâ°á", dataarray);
+                ExcelWriter.Write("We_IT.xlsx", "ê°•ì‚¬ì¶œê²°", dataarray);
             }
         }
     }
