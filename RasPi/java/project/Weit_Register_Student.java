@@ -36,38 +36,38 @@ public class Weit_Register_Student extends JFrame implements ActionListener{
         setContentPane(contentPane);
         contentPane.setLayout(null);
         
-        JLabel lblWeitManagement = new JLabel("¼ö°­»ı µî·Ï");
-        lblWeitManagement.setFont(new Font("µ¸¿ò", Font.BOLD, 16));
+        JLabel lblWeitManagement = new JLabel("ìˆ˜ê°•ìƒ ë“±ë¡");
+        lblWeitManagement.setFont(new Font("ë‹ì›€", Font.BOLD, 16));
         lblWeitManagement.setHorizontalAlignment(SwingConstants.CENTER);
         lblWeitManagement.setBounds(12, 10, 250, 35);
         contentPane.add(lblWeitManagement);
         
-        JLabel lblName = new JLabel("ÀÌ¸§");
+        JLabel lblName = new JLabel("ì´ë¦„");
         lblName.setHorizontalAlignment(SwingConstants.CENTER);
         lblName.setBounds(12, 55, 82, 23);
         contentPane.add(lblName);
         
-        register = new JButton("µî·Ï");
+        register = new JButton("ë“±ë¡");
         register.setBounds(171, 218, 97, 33);
         register.addActionListener(this);
         contentPane.add(register);
         
-        JLabel lblSubject = new JLabel("°ú¸ñ");
+        JLabel lblSubject = new JLabel("ê³¼ëª©");
         lblSubject.setHorizontalAlignment(SwingConstants.CENTER);
         lblSubject.setBounds(12, 88, 82, 23);
         contentPane.add(lblSubject);
         
-        JLabel lblClass = new JLabel("°­ÀÇ½Ç");
+        JLabel lblClass = new JLabel("ê°•ì˜ì‹¤");
         lblClass.setHorizontalAlignment(SwingConstants.CENTER);
         lblClass.setBounds(12, 121, 82, 23);
         contentPane.add(lblClass);
         
-        JLabel lblPhone = new JLabel("º»ÀÎ¿¬¶ôÃ³");
+        JLabel lblPhone = new JLabel("ë³¸ì¸ì—°ë½ì²˜");
         lblPhone.setHorizontalAlignment(SwingConstants.CENTER);
         lblPhone.setBounds(12, 154, 82, 23);
         contentPane.add(lblPhone);
         
-        JLabel lblParent = new JLabel("º¸È£ÀÚ¿¬¶ôÃ³");
+        JLabel lblParent = new JLabel("ë³´í˜¸ìì—°ë½ì²˜");
         lblParent.setHorizontalAlignment(SwingConstants.CENTER);
         lblParent.setBounds(12, 187, 82, 23);
         contentPane.add(lblParent);
@@ -116,7 +116,7 @@ public class Weit_Register_Student extends JFrame implements ActionListener{
         }
         Person stu = new Person(name.getText(), subject.getText(), classname.getText(), phone.getText(), parent.getText());
         if(accept.Student_Register(stu)){
-            JOptionPane.showMessageDialog(null, "Á¤»óµî·Ï µÇ¾ú½À´Ï´Ù.","µî·Ï ¼º°ø", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ì •ìƒë“±ë¡ ë˜ì—ˆìŠµë‹ˆë‹¤.","ë“±ë¡ ì„±ê³µ", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
     }
