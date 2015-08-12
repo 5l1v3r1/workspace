@@ -34,28 +34,28 @@ public class Weit_Register_Instructor extends JFrame implements ActionListener{
         setContentPane(contentPane);
         contentPane.setLayout(null);
         
-        JLabel lblWeitManagement = new JLabel("°­»ç µî·Ï");
-        lblWeitManagement.setFont(new Font("µ¸¿ò", Font.BOLD, 16));
+        JLabel lblWeitManagement = new JLabel("ê°•ì‚¬ ë“±ë¡");
+        lblWeitManagement.setFont(new Font("ë‹ì›€", Font.BOLD, 16));
         lblWeitManagement.setHorizontalAlignment(SwingConstants.CENTER);
         lblWeitManagement.setBounds(12, 10, 250, 35);
         contentPane.add(lblWeitManagement);
         
-        JLabel lblName = new JLabel("ÀÌ¸§");
+        JLabel lblName = new JLabel("ì´ë¦„");
         lblName.setHorizontalAlignment(SwingConstants.CENTER);
         lblName.setBounds(12, 55, 82, 23);
         contentPane.add(lblName);
         
-        register = new JButton("µî·Ï");
+        register = new JButton("ë“±ë¡");
         register.setBounds(171, 218, 97, 33);
         register.addActionListener(this);
         contentPane.add(register);
         
-        JLabel lblDepartment = new JLabel("¼Ò¼Ó");
+        JLabel lblDepartment = new JLabel("ì†Œì†");
         lblDepartment.setHorizontalAlignment(SwingConstants.CENTER);
         lblDepartment.setBounds(12, 88, 82, 23);
         contentPane.add(lblDepartment);
         
-        JLabel lblPhone = new JLabel("º»ÀÎ¿¬¶ôÃ³");
+        JLabel lblPhone = new JLabel("ë³¸ì¸ì—°ë½ì²˜");
         lblPhone.setHorizontalAlignment(SwingConstants.CENTER);
         lblPhone.setBounds(12, 121, 82, 23);
         contentPane.add(lblPhone);
@@ -96,7 +96,7 @@ public class Weit_Register_Instructor extends JFrame implements ActionListener{
         }
         Person instructor = new Person(name.getText(), department.getText(), phone.getText());
         if(accept.Instructor_Register(instructor)){
-            JOptionPane.showMessageDialog(null, "Á¤»óµî·Ï µÇ¾ú½À´Ï´Ù.","µî·Ï ¼º°ø", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ì •ìƒë“±ë¡ ë˜ì—ˆìŠµë‹ˆë‹¤.","ë“±ë¡ ì„±ê³µ", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
     }
