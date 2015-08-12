@@ -94,8 +94,8 @@ public class TCP_Accept implements Runnable{
             if(delstate){
                 // If it's delete state, read uid and delete information
                 if(hashtable.get(UID) == null){
-                    JOptionPane.showMessageDialog(null, "ÀÌ Ä«µå´Â µî·ÏµÇÁö ¾Ê¾Ò½À´Ï´Ù.", "»èÁ¦ ½ÇÆĞ", JOptionPane.ERROR_MESSAGE);
-                    manager.setValue("", "", "", "µî·ÏµÈ ¼ö°­»ıÀÌ ¾ø½À´Ï´Ù.");
+                    JOptionPane.showMessageDialog(null, "ì´ ì¹´ë“œëŠ” ë“±ë¡ë˜ì§€ ì•Šì•˜ìŠµë‹ˆë‹¤.", "ì‚­ì œ ì‹¤íŒ¨", JOptionPane.ERROR_MESSAGE);
+                    manager.setValue("", "", "", "ë“±ë¡ëœ ìˆ˜ê°•ìƒì´ ì—†ìŠµë‹ˆë‹¤.");
                     delstate = false;
                     return;
                 }
@@ -103,9 +103,9 @@ public class TCP_Accept implements Runnable{
                 
                 boolean issuc;
                 if(person.IsInstructor)
-                    issuc = ExcelWriter.Delete("We_IT.xlsx", "°­»ç", person.Phone);
+                    issuc = ExcelWriter.Delete("We_IT.xlsx", "ê°•ì‚¬", person.Phone);
                 else
-                    issuc = ExcelWriter.Delete("We_IT.xlsx", "¼ö°­»ı", person.Phone);
+                    issuc = ExcelWriter.Delete("We_IT.xlsx", "ìˆ˜ê°•ìƒ", person.Phone);
                 
                 if(!issuc){
                     return;
@@ -116,7 +116,7 @@ public class TCP_Accept implements Runnable{
                 objout.writeObject(hashtable);
                 objout.close();
 
-                JOptionPane.showMessageDialog(null, "»èÁ¦¿¡ ¼º°øÇÏ¿´½À´Ï´Ù.", "»èÁ¦ ¼º°ø", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "ì‚­ì œì— ì„±ê³µí•˜ì˜€ìŠµë‹ˆë‹¤.", "ì‚­ì œ ì„±ê³µ", JOptionPane.INFORMATION_MESSAGE);
                 delstate = false;
                 return;
             }
@@ -126,27 +126,27 @@ public class TCP_Accept implements Runnable{
                 return;
             }
             if(hashtable.get(UID) == null)
-                manager.setValue("", "", "", "µî·ÏµÈ ¼ö°­»ıÀÌ ¾ø½À´Ï´Ù.");
+                manager.setValue("", "", "", "ë“±ë¡ëœ ìˆ˜ê°•ìƒì´ ì—†ìŠµë‹ˆë‹¤.");
             else{
                 Person person = hashtable.get(UID);
                 String check = "";
                 if(!person.IsInstructor){
                     person.Check();
                     if(person.State){
-                        check = "Á¤»ó µî¿øÃ³¸® µÇ¾ú½À´Ï´Ù.";
+                        check = "ì •ìƒ ë“±ì›ì²˜ë¦¬ ë˜ì—ˆìŠµë‹ˆë‹¤.";
                     }
                     else{
-                        check = "Á¤»ó ÇÏ¿øÃ³¸® µÇ¾ú½À´Ï´Ù.";
+                        check = "ì •ìƒ í•˜ì›ì²˜ë¦¬ ë˜ì—ˆìŠµë‹ˆë‹¤.";
                     }
                     manager.setValue(person.Name, person.Subject, person.ClassName, check);
                 }
                 else{
                     person.Check();
                     if(!person.State){
-                        check = person.Name + "´Ô Á¤»ó Ãâ±ÙÃ³¸® µÇ¾ú½À´Ï´Ù.";
+                        check = person.Name + "ë‹˜ ì •ìƒ ì¶œê·¼ì²˜ë¦¬ ë˜ì—ˆìŠµë‹ˆë‹¤.";
                     }
                     else{
-                        check = person.Name + "´Ô Á¤»ó Åğ±ÙÃ³¸® µÇ¾ú½À´Ï´Ù.";
+                        check = person.Name + "ë‹˜ ì •ìƒ í‡´ê·¼ì²˜ë¦¬ ë˜ì—ˆìŠµë‹ˆë‹¤.";
                     }
                     manager.setValue("", "", "", check);
                 }
@@ -158,7 +158,7 @@ public class TCP_Accept implements Runnable{
     
     public boolean Student_Register(Person person){
         if(hashtable.get(UID)!=null){
-            JOptionPane.showMessageDialog(null, "ÀÌ Ä«µå´Â ÀÌ¹Ì »ç¿ë ÁßÀÔ´Ï´Ù.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ì´ ì¹´ë“œëŠ” ì´ë¯¸ ì‚¬ìš© ì¤‘ì…ë‹ˆë‹¤.", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         hashtable.put(UID, person);
@@ -171,7 +171,7 @@ public class TCP_Accept implements Runnable{
             dataarray.add(person.Phone);
             dataarray.add(person.Parent);
             
-            int excelrow = ExcelWriter.Write("We_IT.xlsx", "¼ö°­»ı", dataarray);
+            int excelrow = ExcelWriter.Write("We_IT.xlsx", "ìˆ˜ê°•ìƒ", dataarray);
             if(excelrow != -1)
                 person.excelrow = excelrow;
             else
@@ -189,7 +189,7 @@ public class TCP_Accept implements Runnable{
     
     public boolean Instructor_Register(Person person){
         if(hashtable.get(UID)!=null){
-            JOptionPane.showMessageDialog(null, "ÀÌ Ä«µå´Â ÀÌ¹Ì »ç¿ë ÁßÀÔ´Ï´Ù.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ì´ ì¹´ë“œëŠ” ì´ë¯¸ ì‚¬ìš© ì¤‘ì…ë‹ˆë‹¤.", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
         hashtable.put(UID, person);
@@ -200,7 +200,7 @@ public class TCP_Accept implements Runnable{
             dataarray.add(person.ClassName);
             dataarray.add(person.Phone);
 
-            int excelrow = ExcelWriter.Write("We_IT.xlsx", "°­»ç", dataarray);
+            int excelrow = ExcelWriter.Write("We_IT.xlsx", "ê°•ì‚¬", dataarray);
             if(excelrow != -1)
                 person.excelrow = excelrow;
             else
@@ -215,5 +215,4 @@ public class TCP_Accept implements Runnable{
             return false;
         }
     }
-
 }
