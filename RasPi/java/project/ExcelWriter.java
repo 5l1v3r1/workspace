@@ -29,14 +29,14 @@ public class ExcelWriter {
             
             System.out.println("sheet : " + sheet + " is opened...");
 
-            if(sheet.equals("°­»ç")){
+            if(sheet.equals("ê°•ì‚¬")){
                 for(int i=0; i<=sh.getLastRowNum(); i++){
                     Row row = sh.getRow(i);
                     if(row.getCell(2).getStringCellValue().equals(phone))
                         sh.removeRow(row);
                 }
             }
-            else if(sheet.equals("¼ö°­»ý")){
+            else if(sheet.equals("ìˆ˜ê°•ìƒ")){
                 for(int i=0; i<=sh.getLastRowNum(); i++){
                     Row row = sh.getRow(i);
                     System.out.println(row.getCell(3).getStringCellValue());
