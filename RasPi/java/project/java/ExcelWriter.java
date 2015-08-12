@@ -15,8 +15,10 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelWriter {
+    public static String dir = "../excel/";
     public static boolean Delete(String workbook, String sheet, String phone){
         try{
+            workbook += dir;
             XSSFWorkbook wb = new XSSFWorkbook(workbook);
             if(wb==null)
                 return false;
@@ -67,6 +69,7 @@ public class ExcelWriter {
     public static int Write(String workbook, String sheet, ArrayList<Object> dataarray){
         int rowNumber;
         try{
+            workbook += dir;
             XSSFWorkbook wb = new XSSFWorkbook(workbook);
             if(wb==null)
                 return -1;
