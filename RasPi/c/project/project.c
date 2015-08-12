@@ -12,7 +12,7 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#define MY_SERVER_IP "169.254.241.122"
+#define MY_SERVER_IP "127.0.0.1"
 #define PORT_NUMBER 1126
 #define MAXLINE 1024
 #define STATE_REGIT 1011
