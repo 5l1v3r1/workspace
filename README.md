@@ -310,6 +310,18 @@
 Database : ACADEMY  
   
 Table : STUDENT  
+|  Field  |     Type    | Null | Key | Default | Extra |
+|:-------:|:-----------:|:----:|:---:|:-------:|:-----:|
+|   UID   | varchar(20) |  No  | PRI |   NULL  |       |
+|   NAME  |             |      |     |   NULL  |       |
+|  BIRTH  |             |      |     |   NULL  |       |
+|   INST  |             |      |     |   NULL  |       |
+| SUBJECT |             |      |     |   NULL  |       |
+|  START  |             |      |     |   NULL  |       |
+|   END   |             |      |     |   NULL  |       |
+|  PHONE  |             |      |     |   NULL  |       |
+|  PARENT |             |      |     |   NULL  |       |
+  
 | Field   | Type        | Null | Key | Default | Extra |
 |---------|-------------|------|-----|---------|-------|
 | UID     | varchar(20) | NO   | PRI | NULL    |       |
