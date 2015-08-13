@@ -312,7 +312,7 @@ Database : ACADEMY
 Table : STUDENT  
   
 | Field   | Type        | Null | Key | Default | Extra |
-|---------|-------------|------|-----|---------|-------|
+|:-------:|:-----------:|:----:|:---:|:-------:|:-----:|
 | UID     | varchar(20) | NO   | PRI | NULL    |       |
 | NAME    | varchar(10) | NO   |     | NULL    |       |
 | BIRTH   | date        | NO   |     | NULL    |       |
@@ -327,7 +327,7 @@ Table : STUDENT
 Table : STULOG  
   
 | Field | Type        | Null | Key | Default | Extra |
-|-------|-------------|------|-----|---------|-------|
+|:-----:|:-----------:|:----:|:---:|:-------:|:-----:|
 | DAY   | date        | YES  |     | NULL    |       |
 | NAME  | varchar(10) | YES  |     | NULL    |       |
 | START | time        | YES  |     | NULL    |       |
@@ -338,7 +338,7 @@ Table : STULOG
 Table : INSTRUCTOR  
   
 | Field     | Type        | Null | Key | Default | Extra |
-|-----------|-------------|------|-----|---------|-------|
+|:---------:|:-----------:|:----:|:---:|:-------:|:-----:|
 | UID       | varchar(20) | NO   | PRI |         |       |
 | NAME      | varchar(10) | NO   | UNI | NULL    |       |
 | DEPART    | varchar(30) | NO   |     | NULL    |       |
@@ -350,7 +350,7 @@ Table : INSTRUCTOR
 Table : INSTLOG  
   
 | Field    | Type                | Null | Key | Default | Extra |
-|----------|---------------------|------|-----|---------|-------|
+|:--------:|:-------------------:|:----:|:---:|:-------:|:-----:|
 | DAY      | date                | YES  |     | NULL    |       |
 | NAME     | varchar(10)         | YES  |     | NULL    |       |
 | CHECKIN  | time                | YES  |     | NULL    |       |
