@@ -12,7 +12,6 @@
 #include <sys/stat.h>
 #include <unistd.h>
 
-#define MY_SERVER_IP "127.0.0.1"
 #define PORT_NUMBER 1126
 #define MAXLINE 1024
 #define STATE_REGIT 1011
@@ -30,25 +29,25 @@ char buf[MAXLINE];
 static void
 print_hex(const uint8_t *pbtData, const size_t szBytes);
 
-void mgpark_nfc_read(int argc);
+void mgpark_nfc_read(int argc, char *ip, char *macaddr);
 
 void
-mgpark_read(nfc_modulation nmMifare, nfc_device *pnd, nfc_target nt);
+mgpark_read(nfc_modulation nmMifare, nfc_device *pnd, nfc_target nt, char *ip, char *macaddr);
 
-void tcp_send();
-
-int server_state();
+void tcp_send(char *ip, char *macaddr);
 
 int main(int argc, char **argv){
-    mgpark_nfc_read(argc);
+    if(argc < 2)
+        printf("input ip");
+    else if(argc < 3)
+        printf("input macaddr");
+    else
+       mgpark_nfc_read(argc,argv[1], argv[2]);
     return 0;
 }
 
-int server_state(){
-}
-
 void
-tcp_send(){
+tcp_send(char *ip, char *macaddr){
     struct sockaddr_in serveraddr;
     int server_sockfd;
     int client_len;
@@ -59,7 +58,7 @@ tcp_send(){
         return;
     }
     serveraddr.sin_family = AF_INET;
-    serveraddr.sin_addr.s_addr = inet_addr(MY_SERVER_IP);
+    serveraddr.sin_addr.s_addr = inet_addr(ip);
     serveraddr.sin_port = htons(PORT_NUMBER);
 
     client_len = sizeof(serveraddr);
@@ -73,16 +72,20 @@ tcp_send(){
         perror("write error : ");
         return;
     }
+    if(write(server_sockfd, macaddr, sizeof(macaddr)) <= 0){
+        perror("write error : ");
+        return;
+    }
     memset(buf, 0x00, MAXLINE);
     close(server_sockfd);
     free(UID);
 }
 
 void
-mgpark_read(nfc_modulation nmMifare, nfc_device *pnd, nfc_target nt){
+mgpark_read(nfc_modulation nmMifare, nfc_device *pnd, nfc_target nt, char *ip, char *macaddr){
     if(nfc_initiator_select_passive_target(pnd, nmMifare, NULL, 0, &nt) > 0){
         print_hex(nt.nti.nai.abtUid, nt.nti.nai.szUidLen);
-        tcp_send();
+        tcp_send(ip, macaddr);
         while(nfc_initiator_target_is_present(pnd,NULL)==0){}
     }
 }
@@ -105,7 +108,7 @@ print_hex(const uint8_t *pbtData, const size_t szBytes)
   UID_LEN = strlen(UID+UID_SHIFT);
 }
 
-void mgpark_nfc_read(int argc)
+void mgpark_nfc_read(int argc, char *ip, char*macaddr)
 {
   nfc_device *pnd;
   nfc_target nt;
@@ -146,7 +149,7 @@ void mgpark_nfc_read(int argc)
   nmMifare.nbr = NBR_106;
 
   while(1)
-      mgpark_read(nmMifare,pnd,nt);
+      mgpark_read(nmMifare,pnd,nt,ip, macaddr);
   // Close NFC device
   nfc_close(pnd);
   // Release the context
