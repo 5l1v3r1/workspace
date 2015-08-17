@@ -356,3 +356,11 @@ Table : INSTLOG
 | CHECKIN  | time                | YES  |     | NULL    |       |
 | CHECKOUT | time                | YES  |     | NULL    |       |
 | WORKTIME | tinyint(3) unsigned | YES  |     | NULL    |       |
+  
+  
+Table : UID  
+  
+| Field        | Type                | Null | Key | Default | Extra |
+|:------------:|:-------------------:|:----:|:---:|:-------:|:-----:|
+| UID          | varchar(20)         | NO   | PRI | NULL    |       |
+| ISINSTRUCTOR | tinyint(1)          | NO   |     | 0       |       |
