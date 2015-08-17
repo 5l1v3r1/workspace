@@ -9,6 +9,11 @@ public class UDP_Server implements Runnable{
 
     @Override
     public void run(){
+        while(true){
+            action();
+        }
+    }
+    public void action(){
         try{
             byte[] inbuf = new byte[255];
             DatagramSocket sock = new DatagramSocket(1127);
