@@ -172,4 +172,8 @@ public class Mysql_Query {
         
         return rs;
     }
+
+    public Statement getStat(){
+        return st;
+    }
 }

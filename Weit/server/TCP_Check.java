@@ -28,6 +28,7 @@ public class TCP_Check extends Thread{
     
     // variables for process
     String uid = null;
+    String macaddr = null;
     SimpleDateFormat fday = null;
     SimpleDateFormat ftime = null;
     
@@ -51,10 +52,19 @@ public class TCP_Check extends Thread{
                 sock = server.accept();
                 reader = new BufferedReader(new InputStreamReader(sock.getInputStream()));
                 uid = reader.readLine();
+                macaddr = reader.readLine();
                 System.out.println(uid);
+                System.out.println(macaddr);
             }catch(IOException e){
                 System.out.println("Error : BufferedReader Error");
                 e.printStackTrace();
+            }
+            
+            try {
+                checkClassroom();
+            } catch (SQLException e1) {
+                System.out.println("Error : SQL Error");
+                e1.printStackTrace();
             }
             
             conCol.clear();
@@ -82,39 +92,63 @@ public class TCP_Check extends Thread{
     public void checkStudent() throws SQLException{
         
         String name = null;
-        String inst = null;
         
         ArrayList<Object> columns = new ArrayList<Object>();
         ArrayList<Object> items = new ArrayList<Object>();
         
-        
+        conCol.clear();
+        conItems.clear();
+        conCol.add("UID");
+        conItems.add(uid);
         rs = db.Select("STUDENT", conCol, conItems);
         if(rs == null)
             return;
         if(!rs.next())
             return;
         name = rs.getString("NAME");
-        inst = rs.getString("INST");
         
         conCol.clear();
         conItems.clear();
-        conCol.add("NAME");
-        conItems.add(name);
-        conItems.add(name);
+        conCol.add("UID");
+        conCol.add("DAY");
+        conCol.add("MACADDR");
+        conItems.add(uid);
         conItems.add(fday.format(new java.util.Date()));
+        conItems.add(macaddr);
         rs = db.Select("STULOG", conCol, conItems);
         
         if(rs == null)
             return;
         if(!rs.next()){
+            items.add(0);
+            items.add(uid);
             items.add(fday.format(new java.util.Date()));
             items.add(name);
-            items.add(inst);
             items.add(ftime.format(new java.util.Date()));
             items.add(null);
+            items.add(macaddr);
             db.Insert("STULOG", items);
             return;
         }
+        
+        while(rs.isLast())
+            rs.next();
+        if(rs.getDate("CHECKOUT") != null){
+            items.add(0);
+            items.add(uid);
+            items.add(fday.format(new java.util.Date()));
+            items.add(name);
+            items.add(ftime.format(new java.util.Date()));
+            items.add(null);
+            items.add(macaddr);
+            db.Insert("STULOG", items);
+            return;
+        }
+        
+        conCol.clear();
+        conItems.clear();
+        conCol.add("NO");
+        conItems.add(rs.getInt("NO"));
         columns.add("CHECKOUT");
         items.add(ftime.format(new java.util.Date()));
         db.Update("STULOG", columns, items, conCol, conItems);
@@ -129,6 +163,10 @@ public class TCP_Check extends Thread{
         ArrayList<Object> columns = new ArrayList<Object>();
         ArrayList<Object> items = new ArrayList<Object>();
 
+        conCol.clear();
+        conItems.clear();
+        conCol.add("UID");
+        conItems.add(uid);
         rs = db.Select("INSTRUCTOR", conCol, conItems);
         if(rs == null)
             return;
@@ -137,15 +175,17 @@ public class TCP_Check extends Thread{
         
         conCol.clear();
         conItems.clear();
-        conCol.add("NAME");
+        conCol.add("UID");
         conCol.add("DAY");
-        conItems.add(name);
+        conItems.add(uid);
         conItems.add(fday.format(new java.util.Date()));
         rs = db.Select("INSTLOG", conCol, conItems);
         
         if(rs == null)
             return;
         if(!rs.next()){
+            items.add(0);
+            items.add(uid);
             items.add(fday.format(new java.util.Date()));
             items.add(name);
             items.add(ftime.format(new java.util.Date()));
@@ -153,6 +193,24 @@ public class TCP_Check extends Thread{
             db.Insert("INSTLOG", items);
             return;
         }
+        while(rs.isLast())
+            rs.next();
+        if(rs.getDate("CHECKOUT") != null){
+            items.add(0);
+            items.add(uid);
+            items.add(fday.format(new java.util.Date()));
+            items.add(name);
+            items.add(ftime.format(new java.util.Date()));
+            items.add(null);
+            items.add(macaddr);
+            db.Insert("STULOG", items);
+            return;
+        }
+        
+        conCol.clear();
+        conItems.clear();
+        conCol.add("NO");
+        conItems.add(rs.getInt("NO"));
         
         checkin = rs.getDate("CHECKIN");
         java.util.Date end = new java.util.Date();
@@ -163,5 +221,19 @@ public class TCP_Check extends Thread{
         columns.add("WORKTIME");
         items.add(worktime);
         db.Update("INSTLOG", columns, items, conCol, conItems);
+    }
+
+
+    public void checkClassroom() throws SQLException{
+        conCol.clear();
+        conItems.clear();
+        conCol.add("MACADDR");
+        conItems.add(macaddr);
+        
+        rs = db.Select("CLASSROOM", conCol, conItems);
+        if(!rs.next()){
+            conItems.add(ftime.format(new java.util.Date()));
+            db.Insert("CLASSROOM", conItems);
+        }
     }
 }
