@@ -304,3 +304,63 @@
 > http://www.coolsms.co.kr/ 참고
 > #### Python을 이용한 메일보내기
 > [sendMail.py](https://github.com/hello920922/workspace/blob/master/RasPi/python/sendMail/sendMail.py) 참고
+
+#**2015-08-13**#
+> ### Database 설계  
+Database : ACADEMY  
+  
+Table : STUDENT  
+  
+| Field   | Type        | Null | Key | Default | Extra |
+|:-------:|:-----------:|:----:|:---:|:-------:|:-----:|
+| UID     | varchar(20) | NO   | PRI | NULL    |       |
+| NAME    | varchar(10) | NO   |     | NULL    |       |
+| BIRTH   | date        | NO   |     | NULL    |       |
+| INST    | varchar(10) | NO   |     | NULL    |       |
+| SUBJECT | varchar(30) | NO   |     | NULL    |       |
+| START   | date        | NO   |     | NULL    |       |
+| END     | date        | NO   |     | NULL    |       |
+| PHONE   | varchar(13) | NO   |     | NULL    |       |
+| PARENT  | varchar(13) | YES  |     | NULL    |       |
+  
+  
+Table : STULOG  
+  
+| Field | Type        | Null | Key | Default | Extra |
+|:-----:|:-----------:|:----:|:---:|:-------:|:-----:|
+| DAY   | date        | YES  |     | NULL    |       |
+| NAME  | varchar(10) | YES  |     | NULL    |       |
+| START | time        | YES  |     | NULL    |       |
+| END   | time        | YES  |     | NULL    |       |
+| INTS  | varchar(10) | YES  |     | NULL    |       |
+  
+  
+Table : INSTRUCTOR  
+  
+| Field     | Type        | Null | Key | Default | Extra |
+|:---------:|:-----------:|:----:|:---:|:-------:|:-----:|
+| UID       | varchar(20) | NO   | PRI |         |       |
+| NAME      | varchar(10) | NO   | UNI | NULL    |       |
+| DEPART    | varchar(30) | NO   |     | NULL    |       |
+| CLASSROOM | varchar(8)  | NO   |     | NULL    |       |
+| PHONE     | varchar(13) | NO   |     | NULL    |       |
+| EMAIL     | varchar(30) | NO   |     | NULL    |       |
+  
+  
+Table : INSTLOG  
+  
+| Field    | Type                | Null | Key | Default | Extra |
+|:--------:|:-------------------:|:----:|:---:|:-------:|:-----:|
+| DAY      | date                | YES  |     | NULL    |       |
+| NAME     | varchar(10)         | YES  |     | NULL    |       |
+| CHECKIN  | time                | YES  |     | NULL    |       |
+| CHECKOUT | time                | YES  |     | NULL    |       |
+| WORKTIME | tinyint(3) unsigned | YES  |     | NULL    |       |
+  
+  
+Table : UID  
+  
+| Field        | Type                | Null | Key | Default | Extra |
+|:------------:|:-------------------:|:----:|:---:|:-------:|:-----:|
+| UID          | varchar(20)         | NO   | PRI | NULL    |       |
+| ISINSTRUCTOR | tinyint(1)          | NO   |     | 0       |       |
