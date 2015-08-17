@@ -2,10 +2,10 @@
 
 #### 설계
 - Client RaspberryPi  
-  
-Client Raspi는 실행시에 UDP통신으로 Server의 IP를 받아와서  
-자신이 읽은 uid를 보낼 IP를 설정해놓는다.  
-그 후 자신이 읽은 NFC의 UID를 해당 IP로 TCP통신을 사용해 보낸다.  
+>   
+> Client Raspi는 실행시에 UDP통신으로 Server의 IP를 받아와서  
+> 자신이 읽은 uid를 보낼 IP를 설정해놓는다.  
+> 그 후 자신이 읽은 NFC의 UID를 해당 IP로 TCP통신을 사용해 보낸다.  
   
 - Server RasberryPi  
 
