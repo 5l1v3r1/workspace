@@ -5,7 +5,7 @@ public class UDP_Client{
     public static void main(String [] args) throws Exception{
         String bcast = getBcast();
         String serverip = UDPsend(bcast);
-        //startNFC(serverip);
+        startNFC(serverip);
     }
     
     public static void startNFC(String ip) throws Exception{
