@@ -5,12 +5,13 @@ public class UDP_Client{
     public static void main(String [] args) throws Exception{
         String bcast = getBcast();
         String serverip = UDPsend(bcast);
-        startNFC(serverip);
+        String macaddr = getMACAddr();
+        startNFC(serverip, macaddr);
     }
     
-    public static void startNFC(String ip) throws Exception{
+    public static void startNFC(String ip, String macaddr) throws Exception{
         Runtime runtime = Runtime.getRuntime();
-        runtime.exec("nfc-read "+ip);
+        runtime.exec("nfc-read " + ip + " " + macaddr);
     }
 
     public static String UDPsend(String bcast) throws Exception{
@@ -33,6 +34,15 @@ public class UDP_Client{
         return serverip;
     }
 
+    public static String getMACAddr() throws Exception{
+        String command = "ifconfig -a | grep &wlan | awk '{print $5}'";
+        Runtime runtime = Runtime.getRuntime();
+        Process process = runtime.exec(command);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        String line = reader.readLine();
+
+        return line;
+    }
     public static String getBcast() throws Exception{
         String command = "ifconfig";
         Runtime runtime = Runtime.getRuntime();
