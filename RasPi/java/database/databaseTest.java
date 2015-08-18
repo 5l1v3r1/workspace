@@ -8,22 +8,27 @@ public class databaseTest {
 		try {
 			Connection con = null;
 
-			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1",
-					"root", "tasigmin132");
+			con = DriverManager.getConnection("jdbc:mysql://127.0.0.1/ACADEMY",
+					"admin", "academy");
 
 			java.sql.Statement st = null;
 			ResultSet rs = null;
 			st = con.createStatement();
-			rs = st.executeQuery("SHOW DATABASES");
 
-			if (st.execute("SHOW DATABASES")) {
-				rs = st.getResultSet();
-			}
+		    rs = st.executeQuery("SELECT * FROM UID");
+            if(rs == null){
+                System.out.println("NULL");
+                System.exit(0);
+            }
+            if(!rs.next()){
+                System.out.println("NO");
+                System.exit(0);
+            }
+            else{
+                System.out.println("YES");
+            }
+            System.out.println(rs.getString("UID"));
 
-			while (rs.next()) {
-				String str = rs.getNString(1);
-				System.out.println(str);
-			}
 		} catch (SQLException sqex) {
 			System.out.println("SQLException: " + sqex.getMessage());
 			System.out.println("SQLState: " + sqex.getSQLState());
