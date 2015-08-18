@@ -21,6 +21,7 @@ public class UDP_Server implements Runnable{
             String myip = getAddr();
 
             sock.receive(packet);
+            System.out.println(packet.getData());
             packet.setData(myip.getBytes());
 
             sock.send(packet);

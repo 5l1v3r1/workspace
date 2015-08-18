@@ -67,25 +67,25 @@ public class Mysql_Query {
             else
                 query += "'" + item + "', ";
         }
-        
-        
+        if(length > 0)
+            query = query.substring(0, query.length()-2);
         // setting condition
         length = conCol.size();
         if(length > 0){
-            query = query.substring(0, query.length()-2) + " WHERE ";
+            query += " WHERE ";
             for(int i=0; i<length; i++){
                 query += conCol.get(i) + "=";
                 
                 item = conItems.get(i);
                 if(item == null)
-                    query += "NULL, ";
+                    query += "NULL and ";
                 else if(item instanceof Integer || item instanceof Long)
-                    query += item + ", ";
+                    query += item + " and ";
                 else
-                    query += "'" + item + "', ";
+                    query += "'" + item + "' and ";
             }
+            query = query.substring(0, query.length()-5);
         }
-        query = query.substring(0, query.length()-2);
         
         
         // execute query
@@ -114,13 +114,13 @@ public class Mysql_Query {
                 
                 item = conItems.get(i);
                 if(item == null)
-                    query += "NULL, ";
+                    query += "NULL and ";
                 else if(item instanceof Integer || item instanceof Long)
-                    query += item + ", ";
+                    query += item + " and ";
                 else
-                    query += "'" + item + "', ";
+                    query += "'" + item + "' and ";
             }
-            query = query.substring(0, query.length()-2);
+            query = query.substring(0, query.length()-5);
         }
         
         
@@ -151,13 +151,13 @@ public class Mysql_Query {
                 
                 item = conItems.get(i);
                 if(item == null)
-                    query += "NULL, ";
+                    query += "NULL and ";
                 else if(item instanceof Integer || item instanceof Long)
-                    query += item + ", ";
+                    query += item + " and ";
                 else
-                    query += "'" + item + "', ";
+                    query += "'" + item + "' and ";
             }
-            query = query.substring(0, query.length()-2);
+            query = query.substring(0, query.length()-5);
         }
         
         // execute query

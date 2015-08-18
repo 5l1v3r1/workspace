@@ -131,8 +131,7 @@ public class TCP_Check extends Thread{
             return;
         }
         
-        while(rs.isLast())
-            rs.next();
+        rs.last();
         if(rs.getDate("CHECKOUT") != null){
             items.add(0);
             items.add(uid);
