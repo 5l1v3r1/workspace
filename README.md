@@ -364,3 +364,6 @@ Table : UID
 |:------------:|:-------------------:|:----:|:---:|:-------:|:-----:|
 | UID          | varchar(20)         | NO   | PRI | NULL    |       |
 | ISINSTRUCTOR | tinyint(1)          | NO   |     | 0       |       |
+
+#**2015-08-18**#
+Client의 Mac address를 읽어 강의실로 저장하는 기능 추가
