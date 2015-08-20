@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php
-include('instListFunction.php');
+include('function.php');
 tableOpen();
 $key = addslashes($_GET['key']);
 $search = addslashes($_GET['search']);
