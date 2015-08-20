@@ -17,7 +17,7 @@ def main():
 
   yellowLCDon();
   lcd_string("CHECK OUT", LCD_LINE_1, 2);
-  lcd_string("%2d:%2d :%2d" % (now.tm_hour, now.tm_min, now.tm_sec),
+  lcd_string("%02d:%02d:%02d" % (now.tm_hour, now.tm_min, now.tm_sec),
           LCD_LINE_2, 2);
   time.sleep(2);
 
