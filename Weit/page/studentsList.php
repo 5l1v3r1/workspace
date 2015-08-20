@@ -9,6 +9,7 @@
 <body>
 <?php
 include('studentsListFunction.php');
+tableOpen();
 $key = addslashes($_GET['key']);
 $search = addslashes($_GET['search']);
 if(strlen($search) > 0){
@@ -25,6 +26,7 @@ if(strlen($search) > 0){
 else{
     searchAll($con);
 }
+tableClose();
 ?>
 </body>
 </html>

@@ -6,9 +6,7 @@ if($con->connect_errno){
 }
 
 function searchAll($con){
-    if($results = $con->query("SELECT NAME, PHONE, SUBJECT FROM STUDENT")){
-        echo "\n\r<table border=\"1\" width=\"100%\">\n\r";
-        
+    if($results = $con->query("SELECT NAME, PHONE, SUBJECT, UID FROM STUDENT")){
         while($rows = $results->fetch_array(MYSQL_NUM)){
             echo "  ";
             echo "<tr>\n\r";
@@ -17,6 +15,7 @@ function searchAll($con){
             echo "<td align=\"center\" width=\"20%\">\n\r";
             echo "          ";
             echo "<a href=\"view.php?uid=";
+            $uid = $rows[3];
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
             echo ">\n\r";
@@ -61,13 +60,11 @@ function searchAll($con){
             echo "  ";
             echo "</tr>\n\r";
         }
-        echo "</table>\n\r";
     }
 }
 
 function searchName($con, $name){
-    if($results = $con->query("SELECT NAME, PHONE, SUBJECT FROM STUDENT WHERE NAME LIKE '%".$name."%'")){
-        echo "\n\r<table border=\"1\" width=\"100%\">\n\r";
+    if($results = $con->query("SELECT NAME, PHONE, SUBJECT, UID FROM STUDENT WHERE NAME LIKE '%".$name."%'")){
         
         while($rows = $results->fetch_array(MYSQL_NUM)){
             echo "  ";
@@ -77,6 +74,7 @@ function searchName($con, $name){
             echo "<td align=\"center\" width=\"20%\">\n\r";
             echo "          ";
             echo "<a href=\"view.php?uid=";
+            $uid = $rows[3];
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
             echo ">\n\r";
@@ -121,14 +119,12 @@ function searchName($con, $name){
             echo "  ";
             echo "</tr>\n\r";
         }
-        echo "</table>\n\r";
     }
 }
 
 function searchPhone($con, $phone){
-    $querycom = "SELECT NAME, PHONE, SUBJECT FROM STUDENT WHERE PHONE LIKE '%".$phone."%' OR PARENT LIKE '%".$phone."%'";
+    $querycom = "SELECT NAME, PHONE, SUBJECT, UID FROM STUDENT WHERE PHONE LIKE '%".$phone."%' OR PARENT LIKE '%".$phone."%'";
     if($results = $con->query($querycom)){
-        echo "\n\r<table border=\"1\" width=\"100%\">\n\r";
         
         while($rows = $results->fetch_array(MYSQL_NUM)){
             echo "  ";
@@ -138,6 +134,7 @@ function searchPhone($con, $phone){
             echo "<td align=\"center\" width=\"20%\">\n\r";
             echo "          ";
             echo "<a href=\"view.php?uid=";
+            $uid = $rows[3];
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
             echo ">\n\r";
@@ -182,14 +179,12 @@ function searchPhone($con, $phone){
             echo "  ";
             echo "</tr>\n\r";
         }
-        echo "</table>\n\r";
     }
 }
 
 function searchSubject($con, $subject){
-    $querycom = "SELECT NAME, PHONE, SUBJECT FROM STUDENT WHERE SUBJECT LIKE '%".$subject."%'";
+    $querycom = "SELECT NAME, PHONE, SUBJECT, UID FROM STUDENT WHERE SUBJECT LIKE '%".$subject."%'";
     if($results = $con->query($querycom)){
-        echo "\n\r<table border=\"1\" width=\"100%\">\n\r";
         
         while($rows = $results->fetch_array(MYSQL_NUM)){
             echo "  ";
@@ -199,6 +194,7 @@ function searchSubject($con, $subject){
             echo "<td align=\"center\" width=\"20%\">\n\r";
             echo "          ";
             echo "<a href=\"view.php?uid=";
+            $uid = $rows[3];
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
             echo ">\n\r";
@@ -243,7 +239,46 @@ function searchSubject($con, $subject){
             echo "  ";
             echo "</tr>\n\r";
         }
-        echo "</table>\n\r";
     }
 }
+function tableOpen(){
+    echo "\n\r<table border=\"1\" width=\"100%\">\n\r";
+
+    echo "  ";
+    echo "<tr>\n\r";
+
+    echo "      ";
+    echo "<td align=\"center\" width=\"20%\">\n\r";
+
+    echo "          ";
+    echo "이름";
+
+    echo "      ";
+    echo "</td>\n\r";
+
+    echo "      ";
+    echo "<td align=\"center\" width=\"50%\">\n\r";
+
+    echo "          ";
+    echo "전화번호";
+
+    echo "      ";
+    echo "</td>\n\r";
+
+    echo "      ";
+    echo "<td align=\"center\" width=\"30%\">\n\r";
+
+    echo "          ";
+    echo "수강과목";
+
+    echo "      ";
+    echo "</td>\n\r";
+
+    echo "  ";
+    echo "</tr>\n\r";
+}
+function tableClose(){
+    echo "</table>\n\r\n\r";
+}
+
 ?>
