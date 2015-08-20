@@ -381,7 +381,7 @@ Table : SUBJECT
 | Field | Type        | Null | Key | Default | Extra |
 |:-----:|:-----------:|:----:|:---:|:-------:|:-----:|
 | NAME  | varchar(30) | NO   | PRI | NULL    |       |
-| LINK  | mediumtext  | NO   |     | NULL    |       |
+| LINK  | mediumtext  | YES  |     | NULL    |       |
 
 #**2015-08-18**#
 - Client의 Mac address를 읽어 강의실로 저장하는 기능 추가
