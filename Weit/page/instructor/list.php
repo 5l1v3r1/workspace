@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php
-include('function.php');
+include('function_list.php');
 tableOpen();
 $key = addslashes($_GET['key']);
 $search = addslashes($_GET['search']);

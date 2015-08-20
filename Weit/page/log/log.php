@@ -8,7 +8,7 @@
 </head>
 <body>
 <?php
-include('studentsLogFunction.php');
+include('function_log.php');
 $key = addslashes($_GET['uid']);
 if(strlen($key) > 0){
     printName($con, $key);

@@ -14,7 +14,7 @@ function searchAll($con){
             echo "      ";
             echo "<td align=\"center\" width=\"20%\">\n\r";
             echo "          ";
-            echo "<a href=\"studentsLog.php?uid=";
+            echo "<a href=\"manager.php?uid=";
             $uid = $rows[3];
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
@@ -30,7 +30,7 @@ function searchAll($con){
             echo "      ";
             echo "<td align=\"center\" width=\"50%\">\n\r";
             echo "          ";
-            echo "<a href=\"studentsLog.php?uid=";
+            echo "<a href=\"manager.php?uid=";
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
             echo ">\n\r";
@@ -45,7 +45,7 @@ function searchAll($con){
             echo "      ";
             echo "<td align=\"center\" width=\"30%\">\n\r";
             echo "          ";
-            echo "<a href=\"studentsLog.php?uid=";
+            echo "<a href=\"manager.php?uid=";
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
             echo ">\n\r";
@@ -73,7 +73,7 @@ function searchName($con, $name){
             echo "      ";
             echo "<td align=\"center\" width=\"20%\">\n\r";
             echo "          ";
-            echo "<a href=\"studentsLog.php?uid=";
+            echo "<a href=\"manager.php?uid=";
             $uid = $rows[3];
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
@@ -89,7 +89,7 @@ function searchName($con, $name){
             echo "      ";
             echo "<td align=\"center\" width=\"50%\">\n\r";
             echo "          ";
-            echo "<a href=\"studentsLog.php?uid=";
+            echo "<a href=\"manager.php?uid=";
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
             echo ">\n\r";
@@ -104,7 +104,7 @@ function searchName($con, $name){
             echo "      ";
             echo "<td align=\"center\" width=\"30%\">\n\r";
             echo "          ";
-            echo "<a href=\"studentsLog.php?uid=";
+            echo "<a href=\"manager.php?uid=";
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
             echo ">\n\r";
@@ -133,7 +133,7 @@ function searchPhone($con, $phone){
             echo "      ";
             echo "<td align=\"center\" width=\"20%\">\n\r";
             echo "          ";
-            echo "<a href=\"studentsLog.php?uid=";
+            echo "<a href=\"manager.php?uid=";
             $uid = $rows[3];
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
@@ -149,7 +149,7 @@ function searchPhone($con, $phone){
             echo "      ";
             echo "<td align=\"center\" width=\"50%\">\n\r";
             echo "          ";
-            echo "<a href=\"studentsLog.php?uid=";
+            echo "<a href=\"manager.php?uid=";
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
             echo ">\n\r";
@@ -164,7 +164,7 @@ function searchPhone($con, $phone){
             echo "      ";
             echo "<td align=\"center\" width=\"30%\">\n\r";
             echo "          ";
-            echo "<a href=\"studentsLog.php?uid=";
+            echo "<a href=\"manager.php?uid=";
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
             echo ">\n\r";
@@ -193,7 +193,7 @@ function searchSubject($con, $subject){
             echo "      ";
             echo "<td align=\"center\" width=\"20%\">\n\r";
             echo "          ";
-            echo "<a href=\"studentsLog.php?uid=";
+            echo "<a href=\"manager.php?uid=";
             $uid = $rows[3];
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
@@ -209,7 +209,7 @@ function searchSubject($con, $subject){
             echo "      ";
             echo "<td align=\"center\" width=\"50%\">\n\r";
             echo "          ";
-            echo "<a href=\"studentsLog.php?uid=";
+            echo "<a href=\"manager.php?uid=";
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
             echo ">\n\r";
@@ -224,7 +224,7 @@ function searchSubject($con, $subject){
             echo "      ";
             echo "<td align=\"center\" width=\"30%\">\n\r";
             echo "          ";
-            echo "<a href=\"studentsLog.php?uid=";
+            echo "<a href=\"manager.php?uid=";
             echo $uid."\"";
             //echo " target=\"iframe_name\"";
             echo ">\n\r";
