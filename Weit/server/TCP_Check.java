@@ -1,6 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.Date;
@@ -25,6 +26,7 @@ public class TCP_Check extends Thread{
     ServerSocket server = null;
     Socket sock = null;
     BufferedReader reader = null;
+    PrintWriter writer = null;
     
     // variables for process
     String uid = null;
@@ -51,6 +53,7 @@ public class TCP_Check extends Thread{
             try{
                 sock = server.accept();
                 reader = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+                writer = new PrintWriter(sock.getOutputStream());
                 uid = reader.readLine();
                 macaddr = reader.readLine();
                 System.out.println(uid);
@@ -78,10 +81,38 @@ public class TCP_Check extends Thread{
                     continue;
                 if(!rs.next())
                     continue;
-                if(rs.getBoolean("ISINSTRUCTOR") == false)
-                    checkStudent();
-                else
-                    checkInstructor();
+                if(rs.getBoolean("ISINSTRUCTOR") == false){
+                    int checkACK=0;
+                    checkACK = checkStudent();
+                    if(checkACK==0){
+                        writer.println("CHECKIN");
+                        writer.flush();
+                    }
+                    else if(checkACK==1){
+                        writer.println("CHECKOUT");
+                        writer.flush();
+                    }
+                    else{
+                        writer.println("ERROR");
+                        writer.flush();
+                    }
+                }
+                else{
+                    int checkACK=0;
+                    checkACK = checkInstructor();
+                    if(checkACK==0){
+                        writer.println("CHECKIN");
+                        writer.flush();
+                    }
+                    else if(checkACK==1){
+                        writer.println("CHECKOUT");
+                        writer.flush();
+                    }
+                    else{
+                        writer.println("ERROR");
+                        writer.flush();
+                    }
+                }
             }catch(SQLException e){
                 System.out.println("Error : SQL Error");
                 e.printStackTrace();
@@ -89,7 +120,7 @@ public class TCP_Check extends Thread{
         }
     }
 
-    public void checkStudent() throws SQLException{
+    public int checkStudent() throws SQLException{
         
         String name = null;
         
@@ -102,9 +133,9 @@ public class TCP_Check extends Thread{
         conItems.add(uid);
         rs = db.Select("STUDENT", conCol, conItems);
         if(rs == null)
-            return;
+            return -1;
         if(!rs.next())
-            return;
+            return -1;
         name = rs.getString("NAME");
         
         conCol.clear();
@@ -118,7 +149,7 @@ public class TCP_Check extends Thread{
         rs = db.Select("STULOG", conCol, conItems);
         
         if(rs == null)
-            return;
+            return -1;
         if(!rs.next()){
             items.add(0);
             items.add(uid);
@@ -128,9 +159,9 @@ public class TCP_Check extends Thread{
             items.add(null);
             items.add(macaddr);
             db.Insert("STULOG", items);
-            return;
+            return 0;
         }
-        
+
         rs.last();
         if(rs.getDate("CHECKOUT") != null){
             items.add(0);
@@ -141,9 +172,8 @@ public class TCP_Check extends Thread{
             items.add(null);
             items.add(macaddr);
             db.Insert("STULOG", items);
-            return;
+            return 0;
         }
-        
         conCol.clear();
         conItems.clear();
         conCol.add("NO");
@@ -151,10 +181,11 @@ public class TCP_Check extends Thread{
         columns.add("CHECKOUT");
         items.add(ftime.format(new java.util.Date()));
         db.Update("STULOG", columns, items, conCol, conItems);
+        return 1;
     }
     
     
-    public void checkInstructor() throws SQLException{
+    public int checkInstructor() throws SQLException{
         
         String name = null;
         Date checkin = null;
@@ -168,7 +199,7 @@ public class TCP_Check extends Thread{
         conItems.add(uid);
         rs = db.Select("INSTRUCTOR", conCol, conItems);
         if(rs == null)
-            return;
+            return -1;
         if(!rs.next())
         name = rs.getString("NAME");
         
@@ -181,7 +212,7 @@ public class TCP_Check extends Thread{
         rs = db.Select("INSTLOG", conCol, conItems);
         
         if(rs == null)
-            return;
+            return -1;
         if(!rs.next()){
             items.add(0);
             items.add(uid);
@@ -190,10 +221,10 @@ public class TCP_Check extends Thread{
             items.add(ftime.format(new java.util.Date()));
             items.add(null);
             db.Insert("INSTLOG", items);
-            return;
+            return 0;
         }
-        while(rs.isLast())
-            rs.next();
+
+        rs.last();
         if(rs.getDate("CHECKOUT") != null){
             items.add(0);
             items.add(uid);
@@ -203,7 +234,7 @@ public class TCP_Check extends Thread{
             items.add(null);
             items.add(macaddr);
             db.Insert("STULOG", items);
-            return;
+            return 0;
         }
         
         conCol.clear();
@@ -220,6 +251,7 @@ public class TCP_Check extends Thread{
         columns.add("WORKTIME");
         items.add(worktime);
         db.Update("INSTLOG", columns, items, conCol, conItems);
+        return 1;
     }
 
 
