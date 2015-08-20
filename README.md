@@ -376,4 +376,11 @@ Table : CLASSROOM
 | NAME    | tinyint(1)  | NO   |     | 0       |       |
 
 #**2015-08-18**#
-Client의 Mac address를 읽어 강의실로 저장하는 기능 추가
+- Client의 Mac address를 읽어 강의실로 저장하는 기능 추가
+
+#**2015-08-19**#
+- PHP로 데이터베이스의 학생 목록들을 불러와 HTML table로 만들어주는 기능 추가
+- 서버로부터 Check status를 받아, LCD로 Check status와 현재시간을 표시하는 기능 추가  
+  
+#**2015-08-20**#
+- 2015-08-19에 구현한 table에 정보를 클릭하면 해당 학생의 출결기록을 보여주는 기능 추가
