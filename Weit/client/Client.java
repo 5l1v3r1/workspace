@@ -1,20 +1,75 @@
 import java.io.*;
 import java.net.*;
 
-public class UDP_Client{
+public class Client{
     public static void main(String [] args) throws Exception{
         String bcast = getBcast();
         String serverip = UDPsend(bcast);
         String macaddr = getMACAddr();
         System.out.println(macaddr);
-        startNFC(serverip, macaddr);
+        startNFC();
+
+        ServerSocket server = new ServerSocket(1130);
+        Socket sock = null;
+        BufferedReader reader = null;
+        PrintWriter writer = null;
+        
+        while(true){
+            sock = server.accept();
+            reader = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+            String uid = reader.readLine();
+            System.out.println(uid);
+            sock = new Socket(serverip, 1126);
+
+            writer = new PrintWriter(sock.getOutputStream());
+            writer.println(uid);
+            writer.flush();
+            writer.println(macaddr);
+            writer.flush();
+
+            reader = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+            String check = reader.readLine();
+            System.out.println(check);
+            LED(check);
+        }
+    }
+
+    public static void LED(String check) throws Exception{
+        Runtime runtime = Runtime.getRuntime();
+        if(check.equals("CHECKIN")){
+            killPython();
+            System.out.println("Execute checkin.py");
+            runtime.exec("checkin");
+        }
+        else if(check.equals("CHECKOUT")){
+            killPython();
+            System.out.println("Execute checkout.py");
+            runtime.exec("checkout");
+        }
+    }
+
+    public static void killPython() throws Exception{
+        Runtime runtime = Runtime.getRuntime();
+        Process process = runtime.exec("ps ax");
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+
+        String line;
+        while((line = reader.readLine())!=null){
+            if(line.contains("checkin.py") || line.contains("checkout.py")){
+                String [] lines = line.split(" ");
+                for(String l : lines)
+                    if(l.length() > 0){
+                        System.out.println("kill " + l);
+                        runtime.exec("sudo kill -9 " + l);
+                        break;
+                    }
+            }
+        }
     }
     
-    public static void startNFC(String ip, String macaddr) throws Exception{
+    public static void startNFC() throws Exception{
         Runtime runtime = Runtime.getRuntime();
-        ip = ip.trim();
-        macaddr = macaddr.trim();
-        String command = "nfc-read " + ip + " " + macaddr;
+        String command = "nfc-read";
         System.out.println(command);
         runtime.exec(command);
     }
