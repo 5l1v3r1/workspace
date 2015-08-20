@@ -316,54 +316,64 @@ Table : STUDENT
 | UID     | varchar(20) | NO   | PRI | NULL    |       |
 | NAME    | varchar(10) | NO   |     | NULL    |       |
 | BIRTH   | date        | NO   |     | NULL    |       |
-| INST    | varchar(10) | NO   |     | NULL    |       |
 | SUBJECT | varchar(30) | NO   |     | NULL    |       |
 | START   | date        | NO   |     | NULL    |       |
 | END     | date        | NO   |     | NULL    |       |
 | PHONE   | varchar(13) | NO   |     | NULL    |       |
 | PARENT  | varchar(13) | YES  |     | NULL    |       |
+| NOTE    | mediumtext  | YES  |     | NULL    |       |
   
   
 Table : STULOG  
   
-| Field | Type        | Null | Key | Default | Extra |
-|:-----:|:-----------:|:----:|:---:|:-------:|:-----:|
-| DAY   | date        | YES  |     | NULL    |       |
-| NAME  | varchar(10) | YES  |     | NULL    |       |
-| START | time        | YES  |     | NULL    |       |
-| END   | time        | YES  |     | NULL    |       |
-| INTS  | varchar(10) | YES  |     | NULL    |       |
+| Field    | Type        | Null | Key | Default | Extra          |
+|:--------:|:-----------:|:----:|:---:|:-------:|:--------------:|
+| NO       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| UID      | varchar(20) | YES  |     | NULL    |                |
+| DAY      | date        | YES  |     | NULL    |                |
+| NAME     | varchar(10) | YES  |     | NULL    |                |
+| CHECKIN  | time        | YES  |     | NULL    |                |
+| CHECKOUT | time        | YES  |     | NULL    |                |
+| MACADDR  | varchar(20) | YES  |     | NULL    |                |
   
   
 Table : INSTRUCTOR  
   
-| Field     | Type        | Null | Key | Default | Extra |
-|:---------:|:-----------:|:----:|:---:|:-------:|:-----:|
-| UID       | varchar(20) | NO   | PRI |         |       |
-| NAME      | varchar(10) | NO   | UNI | NULL    |       |
-| DEPART    | varchar(30) | NO   |     | NULL    |       |
-| CLASSROOM | varchar(8)  | NO   |     | NULL    |       |
-| PHONE     | varchar(13) | NO   |     | NULL    |       |
-| EMAIL     | varchar(30) | NO   |     | NULL    |       |
+| Field  | Type        | Null | Key | Default | Extra |
+|:------:|:-----------:|:----:|:---:|:-------:|:-----:|
+| UID    | varchar(20) | NO   | PRI |         |       |
+| NAME   | varchar(10) | NO   | UNI | NULL    |       |
+| DEPART | varchar(30) | NO   |     | NULL    |       |
+| PHONE  | varchar(13) | NO   |     | NULL    |       |
+| EMAIL  | varchar(30) | NO   |     | NULL    |       |
   
   
 Table : INSTLOG  
   
-| Field    | Type                | Null | Key | Default | Extra |
-|:--------:|:-------------------:|:----:|:---:|:-------:|:-----:|
-| DAY      | date                | YES  |     | NULL    |       |
-| NAME     | varchar(10)         | YES  |     | NULL    |       |
-| CHECKIN  | time                | YES  |     | NULL    |       |
-| CHECKOUT | time                | YES  |     | NULL    |       |
-| WORKTIME | tinyint(3) unsigned | YES  |     | NULL    |       |
+| Field    | Type                | Null | Key | Default | Extra          |
+|:--------:|:-------------------:|:----:|:---:|:-------:|:--------------:|
+| NO       | int(11)             | NO   | PRI | NULL    | auto_increment |
+| DAY      | date                | YES  |     | NULL    |                |
+| NAME     | varchar(10)         | YES  |     | NULL    |                |
+| CHECKIN  | time                | YES  |     | NULL    |                |
+| CHECKOUT | time                | YES  |     | NULL    |                |
+| WORKTIME | tinyint(3) unsigned | YES  |     | NULL    |                |
   
   
 Table : UID  
   
-| Field        | Type                | Null | Key | Default | Extra |
-|:------------:|:-------------------:|:----:|:---:|:-------:|:-----:|
-| UID          | varchar(20)         | NO   | PRI | NULL    |       |
-| ISINSTRUCTOR | tinyint(1)          | NO   |     | 0       |       |
+| Field        | Type        | Null | Key | Default | Extra |
+|:------------:|:-----------:|:----:|:---:|:-------:|:-----:|
+| UID          | varchar(20) | NO   | PRI | NULL    |       |
+| ISINSTRUCTOR | tinyint(1)  | NO   |     | 0       |       |
+  
+  
+Table : CLASSROOM  
+  
+| Field   | Type        | Null | Key | Default | Extra |
+|:-------:|:-----------:|:----:|:---:|:-------:|:-----:|
+| MACADDR | varchar(20) | NO   | PRI | NULL    |       |
+| NAME    | tinyint(1)  | NO   |     | 0       |       |
 
 #**2015-08-18**#
 Client의 Mac address를 읽어 강의실로 저장하는 기능 추가
