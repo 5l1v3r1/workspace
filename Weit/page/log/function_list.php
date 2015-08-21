@@ -6,7 +6,7 @@ if($con->connect_errno){
 }
 
 function searchAll($con){
-    if($results = $con->query("SELECT NAME, PHONE, SUBJECT, UID FROM STUDENT")){
+    if($results = $con->query("SELECT NAME, PHONE, SUBJECT, UID FROM STUDENT ORDER BY NAME ASC")){
         while($rows = $results->fetch_array(MYSQL_NUM)){
             echo "  ";
             echo "<tr>\n\r";
@@ -64,7 +64,7 @@ function searchAll($con){
 }
 
 function searchName($con, $name){
-    if($results = $con->query("SELECT NAME, PHONE, SUBJECT, UID FROM STUDENT WHERE NAME LIKE '%".$name."%'")){
+    if($results = $con->query("SELECT NAME, PHONE, SUBJECT, UID FROM STUDENT WHERE NAME LIKE '%".$name."%' ORDER BY NAME ASC")){
         
         while($rows = $results->fetch_array(MYSQL_NUM)){
             echo "  ";
@@ -123,7 +123,7 @@ function searchName($con, $name){
 }
 
 function searchPhone($con, $phone){
-    $querycom = "SELECT NAME, PHONE, SUBJECT, UID FROM STUDENT WHERE PHONE LIKE '%".$phone."%' OR PARENT LIKE '%".$phone."%'";
+    $querycom = "SELECT NAME, PHONE, SUBJECT, UID FROM STUDENT WHERE PHONE LIKE '%".$phone."%' OR PARENT LIKE '%".$phone."%' ORDER BY NAME ASC";
     if($results = $con->query($querycom)){
         
         while($rows = $results->fetch_array(MYSQL_NUM)){
@@ -183,7 +183,7 @@ function searchPhone($con, $phone){
 }
 
 function searchSubject($con, $subject){
-    $querycom = "SELECT NAME, PHONE, SUBJECT, UID FROM STUDENT WHERE SUBJECT LIKE '%".$subject."%'";
+    $querycom = "SELECT NAME, PHONE, SUBJECT, UID FROM STUDENT WHERE SUBJECT LIKE '%".$subject."%' ORDER BY NAME ASC";
     if($results = $con->query($querycom)){
         
         while($rows = $results->fetch_array(MYSQL_NUM)){

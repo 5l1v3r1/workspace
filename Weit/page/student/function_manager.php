@@ -10,12 +10,12 @@ function search($con, $uid){
 
     if(strlen($uid)==0)
         return;
-    $querycom = "SELECT * FROM UID='".$uid."'";
+    $querycom = "SELECT * FROM STUDENT WHERE UID='".$uid."'";
     if($results = $con->query($querycom)){
         $row = results->fetch_array(MYSQL_NUM);
     }
     else{
-        return null;
+        return;
     }
 }
 function printName(){
