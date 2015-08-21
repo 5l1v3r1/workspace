@@ -5,6 +5,22 @@ if($con->connect_errno){
     exit();
 }
 $row = null;
+
+
+
+function modifyData($uid, $name, $birth, $subject, $start, $end, $phone, $parent, $note){
+    global $con;
+    $querycom = "UPDATE STUDENT SET NAME='".$name."', BIRTH='".$birth."', ";
+    $querycom = $querycom."SUBJECT = '".$subject."', START='".$start."', ";
+    $querycom = $querycom."END='".$end."', PHONE='".$phone."', ";
+    $querycom = $querycom."PARENT='".$parent."', NOTE='".$note"'";
+    $con->query($querycom);
+}
+function deleteData($uid){
+    global $con;
+    $querycom = "DELETE FROM STUDENT WHERE UID='".$uid."'";
+    $con->query($querycom);
+}
 function search($con, $uid){
     global $row;
 
