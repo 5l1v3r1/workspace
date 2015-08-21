@@ -7,6 +7,7 @@ import java.net.Socket;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -163,7 +164,7 @@ public class TCP_Check extends Thread{
         }
 
         rs.last();
-        if(rs.getDate("CHECKOUT") != null){
+        if(rs.getTime("CHECKOUT") != null){
             items.add(0);
             items.add(uid);
             items.add(fday.format(new java.util.Date()));
@@ -188,7 +189,7 @@ public class TCP_Check extends Thread{
     public int checkInstructor() throws SQLException{
         
         String name = null;
-        Date checkin = null;
+        Time checkin = null;
         
         ArrayList<Object> columns = new ArrayList<Object>();
         ArrayList<Object> items = new ArrayList<Object>();
@@ -201,6 +202,7 @@ public class TCP_Check extends Thread{
         if(rs == null)
             return -1;
         if(!rs.next())
+            return -1;
         name = rs.getString("NAME");
         
         conCol.clear();
@@ -220,20 +222,21 @@ public class TCP_Check extends Thread{
             items.add(name);
             items.add(ftime.format(new java.util.Date()));
             items.add(null);
+            items.add(null);
             db.Insert("INSTLOG", items);
             return 0;
         }
 
         rs.last();
-        if(rs.getDate("CHECKOUT") != null){
+        if(rs.getTime("CHECKOUT") != null){
             items.add(0);
             items.add(uid);
             items.add(fday.format(new java.util.Date()));
             items.add(name);
             items.add(ftime.format(new java.util.Date()));
             items.add(null);
-            items.add(macaddr);
-            db.Insert("STULOG", items);
+            items.add(null);
+            db.Insert("INSTLOG", items);
             return 0;
         }
         
@@ -242,9 +245,18 @@ public class TCP_Check extends Thread{
         conCol.add("NO");
         conItems.add(rs.getInt("NO"));
         
-        checkin = rs.getDate("CHECKIN");
+        checkin = rs.getTime("CHECKIN");
+        System.out.println(checkin);
+        java.util.Date start = new java.util.Date(checkin.getTime());
         java.util.Date end = new java.util.Date();
-        int worktime = (int)(Math.round((double)(end.getTime() - checkin.getTime()) / 3600000.0));
+        SimpleDateFormat fhour = new SimpleDateFormat("HH");
+        SimpleDateFormat fmin = new SimpleDateFormat("mm");
+        
+        double hour = Double.parseDouble(fhour.format(end)) - Double.parseDouble(fhour.format(start));
+        double min = Double.parseDouble(fmin.format(end)) - Double.parseDouble(fmin.format(start));
+        int worktime = (int)Math.round(hour + min/60.0);
+        
+        System.out.println(name + "'s worktime : " + hour + "h " + min + "m" + "->" + worktime);
         
         columns.add("CHECKOUT");
         items.add(ftime.format(end));
