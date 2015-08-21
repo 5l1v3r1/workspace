@@ -5,6 +5,18 @@ if($con->connect_errno){
     exit();
 }
 $row = null;
+function modifyData($uid, $name, $depart, $phone, $email){
+    global $con;
+    $querycom = "UPDATE INSTUCTOR SET NAME='".$name."', ";
+    $querycom = $querycom."DEPART='".$depart."', PHONE='".$phone."', ";
+    $querycom = $querycom."EMAIL='".$email."' WHERE UID='".$uid."'";
+    $con->query($querycom);
+}
+function deleteData($uid){
+    global $con;
+    $querycom = "DELETE FROM INSTRUCTOR WHERE UID='".$uid."'";
+    $con->query($querycom);
+}
 function search($con, $uid){
     global $row;
 
