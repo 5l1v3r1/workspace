@@ -22,9 +22,9 @@
         <input name="submit" type="submit" value="검색" style="background-color:#b6f06a; border:0;width:43px;height:24px;"/>
       </td>
 
-      <td width="95"> &nbsp </td>          
+      <td width="75"> &nbsp </td>          
 
-      <td width="650" height="24" align="center">
+      <td width="630" height="24" align="center">
           ------------------------------------ 출결현황 ------------------------------------
       </td>
 
@@ -35,13 +35,13 @@
     <tr>
 
       <td height="480" align="center" colspan="2">
-          <iframe width="330" height="480" scrolling="Yes" name="list" src="list.php">
+          <iframe width="300" height="480" scrolling="Yes" name="list" src="list.php">
               이 웹브라우저는 iframe을 지원하지 않습니다.
           </iframe>
       </td>
 
       <td height="480" align="center">
-          <iframe width="600" height="480" scrolling="Yes" name="log" src="log.php">
+          <iframe width="630" height="480" scrolling="Yes" name="log" src="log.php">
               이 웹브라우저는 iframe을 지원하지 않습니다.
           </iframe>
       </td>
