@@ -1,66 +1,54 @@
 <?php
 $con = new mysqli("localhost","admin","academy","ACADEMY");
 if($con->connect_errno){
-    printf("Connect failed: %s\n", $con->connect_error);
     exit();
 }
-$row = null;
-function modifyData($uid, $name, $depart, $phone, $email){
-    global $con;
-    $querycom = "UPDATE INSTUCTOR SET NAME='".$name."', ";
-    $querycom = $querycom."DEPART='".$depart."', PHONE='".$phone."', ";
-    $querycom = $querycom."EMAIL='".$email."' WHERE UID='".$uid."'";
-    $con->query($querycom);
-}
-function deleteData($uid){
-    global $con;
-    $querycom = "DELETE FROM INSTRUCTOR WHERE UID='".$uid."'";
-    $con->query($querycom);
-}
-function search($con, $uid){
-    global $row;
-
-    if(strlen($uid)==0)
-        return;
-    $querycom = "SELECT * FROM INSTRUCTOR WHERE UID='".$uid."'";
-    if($results = $con->query($querycom)){
-        $row = results->fetch_array(MYSQL_NUM);
+function printName($con, $uid){
+    if(strlen($uid)==0){
+        return ;
     }
-    else{
-        return;
+    $querycom = "SELECT NAME FROM INSTRUCTOR WHERE UID='".$uid."'";
+    if($result = $con->query($querycom)){
+        if($row = $result->fetch_array(MYSQL_NUM)){
+            echo $row[0];
+        }
     }
 }
-function printName(){
-    global $row;
 
-    if($row==null)
-        echo "";
-    else
-        echo $row[1];
+function printDepart($con, $uid){
+    if(strlen($uid)==0){
+        return ;
+    }
+    $querycom = "SELECT DEPART FROM INSTRUCTOR WHERE UID='".$uid."'";
+    if($result = $con->query($querycom)){
+        if($row = $result->fetch_array(MYSQL_NUM)){
+            echo $row[0];
+        }
+    }
 }
-function printDepart(){
-    global $row;
-    if($row==null)
-        echo "";
-    else
-        echo $row[2];
+function printEmail($con, $uid){
+    if(strlen($uid)==0){
+        return ;
+    }
+    $querycom = "SELECT EMAIL FROM INSTRUCTOR WHERE UID='".$uid."'";
+    if($result = $con->query($querycom)){
+        if($row = $result->fetch_array(MYSQL_NUM)){
+            echo $row[0];
+        }
+    }
 }
-function printPhone(){
-    global $row;
-    if($row==null)
-        echo "";
-    else
-        echo $row[3];
+function printPhone($con, $uid){
+    if(strlen($uid)==0){
+        return ;
+    }
+    $querycom = "SELECT PHONE FROM INSTRUCTOR WHERE UID='".$uid."'";
+    if($result = $con->query($querycom)){
+        if($row = $result->fetch_array(MYSQL_NUM)){
+            echo $row[0];
+        }
+    }
 }
-function printEmail(){
-    global $row;
-    if($row==null)
-        echo "";
-    else
-        echo $row[4];
-}
-function printTotal($uid, $yy, $mm){
-    global $con;
+function printTotal($con, $uid, $yy, $mm){
     $querycom = "SELECT SUM(WORKTIME) FROM INSTLOG";
     $querycom = $querycom." WHERE UID='".$uid."'";
     $querycom = $querycom." AND YEAR(DAY)=".$yy." AND MONTH(DAY)=".$mm;
@@ -70,57 +58,29 @@ function printTotal($uid, $yy, $mm){
         }
     }
 }
-function printLog($uid, $yy, $mm){
-    global $con;
-    $querycom = "SELECT DAY, CHECKIN, CHECKOUT, WORKTIME FROM INSTLOG";
-    $querycom = $querycom." WHERE UID='".$uid."'";
-    $querycom = $querycom." AND YEAR(DAY)=".$yy." AND MONTH(DAY)=".$mm;
-    if($result = $con->query($querycom)){
-        while($rows = $result->fetch_array(MYSQL_NUM)){
-            echo "  ";
-            echo "<tr>\n\r";
-            echo "      ";
-            echo "<td align=\"center\" width=\"30%\">\n\r";
-            echo "          ";
-            echo $rows[0]."\n\r";
-            echo "      ";
-            echo "</td>\n\r";
-            echo "  ";
-            echo "</tr>\n\r";
 
-            echo "  ";
-            echo "<tr>\n\r";
-            echo "      ";
-            echo "<td align=\"center\" width=\"30%\">\n\r";
-            echo "          ";
-            echo $rows[1]."\n\r";
-            echo "      ";
-            echo "</td>\n\r";
-            echo "  ";
-            echo "</tr>\n\r";
-
-            echo "  ";
-            echo "<tr>\n\r";
-            echo "      ";
-            echo "<td align=\"center\" width=\"30%\">\n\r";
-            echo "          ";
-            echo $rows[2]."\n\r";
-            echo "      ";
-            echo "</td>\n\r";
-            echo "  ";
-            echo "</tr>\n\r";
-
-            echo "  ";
-            echo "<tr>\n\r";
-            echo "      ";
-            echo "<td align=\"center\" width=\"10%\">\n\r";
-            echo "          ";
-            echo $rows[3]."\n\r";
-            echo "      ";
-            echo "</td>\n\r";
-            echo "  ";
-            echo "</tr>\n\r";
-        }
+function printYear(){
+    $yy = date("Y");
+    for($i=2010; $i<=$yy+5; $i++){
+        if($i == $yy)
+            echo "<option value=\"".$i."\" selected=\"selected\">";
+        else
+            echo "<option value=\"".$i."\">";
+        echo $i;
+        echo "</option>\n\r";
     }
 }
+
+function printMonth(){
+    $mm = date("n");
+    for($i=1; $i<=12; $i++){
+        if($i == $mm)
+            printf("<option value=\"%02d\" selected=\"selected\">",$i);
+        else
+           printf("<option value=\"%02d\">",$i);
+        printf("%02d",$i);
+        printf("</option>\n\r");
+    }
+}
+
 ?>
