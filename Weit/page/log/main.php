@@ -12,7 +12,7 @@
     <tr height="15"></tr>
     <tr>
 
-      <td width="235" height="24" valign="buttom">
+      <td width="300" height="24" valign="buttom" align="center">
         <select name="key" id="key">
           <option value="name">이름</option>
           <option value="phone">전화번호</option>
@@ -22,7 +22,6 @@
         <input name="submit" type="submit" value="검색" style="background-color:#b6f06a; border:0;width:43px;height:24px;"/>
       </td>
 
-      <td width="75"> &nbsp </td>          
 
       <td width="630" height="24" align="center">
           ------------------------------------ 출결현황 ------------------------------------
@@ -34,14 +33,14 @@
 
     <tr>
 
-      <td height="480" align="center" colspan="2">
-          <iframe width="300" height="480" scrolling="Yes" name="list" src="list.php">
+      <td height="480" align="center">
+          <iframe width="300" height="480" scrolling="Yes" name="list" src="list.php" frameborder="0">
               이 웹브라우저는 iframe을 지원하지 않습니다.
           </iframe>
       </td>
 
       <td height="480" align="center">
-          <iframe width="630" height="480" scrolling="Yes" name="log" src="log.php">
+          <iframe width="630" height="480" scrolling="Yes" name="log" src="log.php" frameborder="0">
               이 웹브라우저는 iframe을 지원하지 않습니다.
           </iframe>
       </td>
