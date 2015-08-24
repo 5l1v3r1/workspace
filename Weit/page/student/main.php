@@ -14,7 +14,7 @@
 
       <td width="235" height="24" valign="buttom">
         <select name="key" id="key">
-          <option value="name">수강생</option>
+          <option value="name">이름</option>
           <option value="phone">전화번호</option>
           <option value="subject">수강과목</option>
         </select>
