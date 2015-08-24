@@ -4,12 +4,20 @@
     <style type = "text/css">
         a {text-decoration:none; color:black;}
         table {border-collapse:collapse;}
+        td {font-size:90%;}
     </style>
 </head>
+
 <body>
+
+<table border="0" width="100%" cellspacing="0">
+    <tr bgcolor="#b6f06a">
+        <td width="25%" align="center"> 이름 </td>
+        <td width="40%" align="center"> 전화번호</td>
+        <td width="35%" align="center"> 수강과목</td>
+    </tr>
 <?php
 include('function_list.php');
-tableOpen();
 $key = addslashes($_GET['key']);
 $search = addslashes($_GET['search']);
 if(strlen($search) > 0){
@@ -26,7 +34,9 @@ if(strlen($search) > 0){
 else{
     searchAll($con);
 }
-tableClose();
 ?>
+
+</table>
+
 </body>
 </html>
