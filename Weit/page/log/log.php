@@ -25,7 +25,7 @@ $key = addslashes($_GET['uid']);
         </td>
         <td width="80%"/>
     </tr>
-    <tr heigth="20px"><td>&nbsp</td></tr>
+    <tr><td>&nbsp</td></tr>
 </table>
 
 <table width="100%" border="0">
