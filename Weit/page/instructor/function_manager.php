@@ -48,17 +48,6 @@ function printPhone($con, $uid){
         }
     }
 }
-function printTotal($con, $uid, $yy, $mm){
-    $querycom = "SELECT SUM(WORKTIME) FROM INSTLOG";
-    $querycom = $querycom." WHERE UID='".$uid."'";
-    $querycom = $querycom." AND YEAR(DAY)=".$yy." AND MONTH(DAY)=".$mm;
-    if($result = $con->query($querycom)){
-        if($rows = $result->fetch_array(MYSQL_NUM)){
-            echo $rows[0];
-        }
-    }
-}
-
 function printYear(){
     $yy = date("Y");
     for($i=2010; $i<=$yy+5; $i++){
@@ -81,6 +70,15 @@ function printMonth(){
         printf("%02d",$i);
         printf("</option>\n\r");
     }
+}
+
+function deleteInst($con, $uid){
+    $querycom = "DELETE FROM INSTRUCTOR WHERE UID='".$uid."'";
+    $con->query($querycom);
+    $querycom = "DELETE FROM INSTLOG WHERE UID='".$uid."'";
+    $con->query($querycom);
+    $querycom = "DELETE FROM UID WHERE UID='".$uid."'";
+    $con->query($querycom);
 }
 
 ?>

@@ -15,6 +15,12 @@ $mm = addslashes($_GET['mm']);
 ?>
 
 <table width="100%" border="0">
+    <tr>
+        <td colspan="3" align="right" style="padding-right:30px">
+            <font color="76b02a"> 총 근무시간 : </font>
+        </td>
+        <td> <?php printTotal($con, $key, $yy, $mm); ?> 
+        </td>
     <tr bgcolor="b6f06a">
         <td width="30%" align="center"> 날짜 </td>
         <td width="25%" align="center"> 등원 </td> 

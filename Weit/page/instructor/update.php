@@ -6,23 +6,11 @@
         table {border-collapse:collapse;}
     </style>
 </head>
-
+<body>
 <?php
 include('function_manager.php');
 $uid = addslashes($_GET['uid']);
 ?>
-
-<body>
-
-<script>
-function deletebox(){
-    var ok = confirm("정말 삭제하시겠습니까?");
-    if(ok){
-        alert("삭제되었습니다.");
-    }
-}
-</script>
-
 <form method="get" action="log.php" target="log">
 <input name="uid" type="hidden" value="<?php echo $uid; ?>"/>
 <table width="100%" border="0">
@@ -72,7 +60,7 @@ function deletebox(){
 
     <tr>
         <td width="80%" align="right" colspan="4" style="padding-right:40px">
-           <input type="button" value="삭제" onclick="deletebox()" style="background-color:#b6f06a; border:0; width:43px; height:20px;"/>
+            수정버튼
         </td>
     </tr>
     
@@ -83,7 +71,7 @@ function deletebox(){
             <font color="76b02a">출퇴근기록 : </font>
         </td>
 
-        <td align="left" colspan="3">
+        <td width="20%" align="left" colspan="3">
             &nbsp;
             <select name="yy">
                 <?php printYear() ?>
@@ -93,7 +81,6 @@ function deletebox(){
             </select>
             <input name="submit" type="submit" value="검색" style="background-color:#b6f06a; border:0; width:43px; height:20px;"/>
         </td>
-
     </tr>
 
     <tr><td/></tr>

@@ -4,7 +4,16 @@ if($con->connect_errno){
     printf("Connect failed: %s\n", $con->connect_error);
     exit();
 }
-
+function printTotal($con, $uid, $yy, $mm){
+    $querycom = "SELECT SUM(WORKTIME) FROM INSTLOG";
+    $querycom = $querycom." WHERE UID='".$uid."'";
+    $querycom = $querycom." AND YEAR(DAY)=".$yy." AND MONTH(DAY)=".$mm;
+    if($result = $con->query($querycom)){
+        if($row = $result->fetch_array(MYSQL_NUM)){
+            echo $row[0]." 시간";
+        }
+    }
+}
 function printLOG($con, $uid, $yy, $mm){
     $querycom = "SELECT DAY, CHECKIN, CHECKOUT, WORKTIME FROM INSTLOG";
     $querycom = $querycom." WHERE UID='".$uid."' AND";
