@@ -17,7 +17,7 @@
         </select>
       </label></td>
       <td width="119" align="center"><input name="textfield" type="text" id="textfield" size="10" maxlength="13" /></td>
-      <td width="60" align="left"><input type="image" src="images/button.gif" onclick="javascript:alert('박민규바보멍청이')"  /></td>
+      <td width="60" align="left"><input type="image" src="../images/button.gif" onclick="javascript:alert('박민규바보멍청이')"  /></td>
       <td width="693" rowspan="2" valign="top"><table width="650" height="591" border="0" cellpadding="0" cellspacing="0">
         <tr>
           <td colspan="7" height="30" align="center">------------------------------------ 수강생관리 ------------------------------------</td>

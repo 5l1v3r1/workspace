@@ -4,6 +4,7 @@ if($con->connect_errno){
     printf("Connect failed: %s\n", $con->connect_error);
     exit();
 }
+
 function getClassRoom($con, $macaddr){
     $querycom = "SELECT NAME FROM CLASSROOM WHERE MACADDR='".$macaddr."'";
     if($results = $con->query($querycom)){
@@ -60,49 +61,4 @@ function printLOG($con, $uid){
         }
     }
 }
-
-
-
-function tableOpen(){
-    echo "\n\r<table border=\"1\" width=\"100%\">\n\r";
-
-    echo "  ";
-    echo "<tr>\n\r";
-
-    echo "      ";
-    echo "<td align=\"center\" width=\"30%\">\n\r";
-    echo "          ";
-    echo "날짜";
-    echo "      ";
-    echo "</td>\n\r";
-
-    echo "      ";
-    echo "<td align=\"center\" width=\"25%\">\n\r";
-    echo "          ";
-    echo "등원";
-    echo "      ";
-    echo "</td>\n\r";
-
-    echo "      ";
-    echo "<td align=\"center\" width=\"25%\">\n\r";
-    echo "          ";
-    echo "하원";
-    echo "      ";
-    echo "</td>\n\r";
-
-    echo "      ";
-    echo "<td align=\"center\" width=\"20%\">\n\r";
-    echo "          ";
-    echo "강의실";
-    echo "      ";
-    echo "</td>\n\r";
-
-    echo "  ";
-    echo "</tr>\n\r";
-}
-function tableClose(){
-    echo "\n\r";
-    echo "</table>\n\r";
-}
-
 ?>
