@@ -12,19 +12,20 @@
     <tr height="15"></tr>
     <tr>
 
-      <td width="300" height="24" valign="buttom" align="center">
+      <td width="200" height="24" valign="buttom" align="right">
         <select name="key" id="key">
           <option value="name">이름</option>
           <option value="phone">전화번호</option>
           <option value="subject">수강과목</option>
         </select>
         <input name="search" type="text" id="textfield" size="10" maxlength="13" />
-        <input name="submit" type="submit" value="검색" style="background-color:#b6f06a; border:0;width:43px;height:24px;"/>
+      <td width="100" height="24" valign="buttom" align="left" style="padding-left:10px">
+        <input name="submit" type="image" src="../images/button.gif" style="height:46;width:23;"/>
       </td>
 
 
-      <td width="630" height="24" align="center">
-          ------------------------------------ 출결현황 ------------------------------------
+      <td width="630" height="24" align="left">
+        <img src="../images/title_01.gif"/>
       </td>
 
     </tr>
@@ -33,7 +34,7 @@
 
     <tr>
 
-      <td height="480" align="center">
+      <td height="480" align="center" colspan="2">
           <iframe width="300" height="480" scrolling="Yes" name="list" src="list.php" frameborder="0">
               이 웹브라우저는 iframe을 지원하지 않습니다.
           </iframe>

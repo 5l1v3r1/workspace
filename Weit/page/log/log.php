@@ -15,7 +15,7 @@ $key = addslashes($_GET['uid']);
 <table width="100%" border="0">
     <tr>
         <td width="10%" align="center">
-            <font color="76b02a">이름&nbsp: </font>
+            <font color="#2b8b9b">이름&nbsp: </font>
         </td>
         <td width="10%" align="center">
             <?php
@@ -29,7 +29,7 @@ $key = addslashes($_GET['uid']);
 </table>
 
 <table width="100%" border="0">
-    <tr bgcolor="b6f06a">
+    <tr bgcolor="2b8b9b">
         <td width="30%" align="center"> 날짜 </td>
         <td width="25%" align="center"> 등원 </td> 
         <td width="25%" align="center"> 하원 </td>

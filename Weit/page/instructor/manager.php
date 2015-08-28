@@ -4,6 +4,7 @@
     <style type = "text/css">
         a {text-decoration:none; color:black;}
         table {border-collapse:collapse;}
+        td {font-size:95%;}
     </style>
 </head>
 
@@ -28,7 +29,7 @@ function deletebox(){
 <table width="100%" border="0">
     <tr>
         <td width="15%" align="right">
-            <font color="76b02a">이름 : </font>
+            <font color="2b8b9b">이름 : </font>
         </td>
 
         <td width="23%" align="left">
@@ -37,7 +38,7 @@ function deletebox(){
         </td>
 
         <td width="20%" align="right">
-            <font color="76b02a">소속부서 : </font>
+            <font color="2b8b9b">소속부서 : </font>
         </td>
         
         <td width="42%" align="left">
@@ -50,7 +51,7 @@ function deletebox(){
 
     <tr>
         <td width="15%" align="right">
-            <font color="76b02a">연락처 : </font>
+            <font color="2b8b9b">연락처 : </font>
         </td>
 
         <td width="23%" align="left">
@@ -59,7 +60,7 @@ function deletebox(){
         </td>
 
         <td width="20%" align="right">
-            <font color="76b02a">E-mail : </font>
+            <font color="2b8b9b">E-mail : </font>
         </td>
         
         <td width="42%" align="left">
@@ -72,7 +73,15 @@ function deletebox(){
 
     <tr>
         <td width="80%" align="right" colspan="4" style="padding-right:40px">
-           <input type="button" value="삭제" onclick="deletebox()" style="background-color:#b6f06a; border:0; width:43px; height:20px;"/>
+        <?php
+        if(!($uid=="")){
+           echo "<input type=\"button\" value=\"수정\" onclick=\"deletebox()\" style=\"background-color:#b6f06a; border:0; width:43px; height:20px;\"/>\n\r";
+           echo "<input type=\"button\" value=\"삭제\" onclick=\"deletebox()\" style=\"background-color:#b6f06a; border:0; width:43px; height:20px;\"/>\n\r";
+        }
+        else{
+           echo "&nbsp;\n\r";
+        }
+        ?>
         </td>
     </tr>
     
@@ -80,18 +89,20 @@ function deletebox(){
 
     <tr>
         <td width="20%" align="right">
-            <font color="76b02a">출퇴근기록 : </font>
+            <font color="2b8b9b">출퇴근기록 : </font>
         </td>
 
-        <td align="left" colspan="3">
+        <td width="10%" valign="buttom" align="right" style="padding-right:10px">
             &nbsp;
-            <select name="yy">
+            <select name="yy" height="100%">
                 <?php printYear() ?>
             </select>
-            <select name="mm">
+            <select name="mm" height="100%">
                 <?php printMonth() ?>
             </select>
-            <input name="submit" type="submit" value="검색" style="background-color:#b6f06a; border:0; width:43px; height:20px;"/>
+        </td>
+        <td width="80%" align="left" colspan="2">
+            <input name="submit" type="image" src="../images/button.gif" height="100%"/>
         </td>
 
     </tr>
