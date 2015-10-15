@@ -1,0 +1,21 @@
+[Deap Learning : Artifical Neural Network에 포함]
+- Artifical Neural Network -
+USE : Control, Machine Learning
+Motive : Person's Brain
+
+- Perceptron -
+perceptron - deterministic
+Boltzmann machine - probability
+Xi = f(SUM[Wij Uj])
+nonlinear -> multi layer
+
+
+- 주사위 1나올 확률에 대하여
+이론 : 1/6
+통계 : 1이나온횟수 / 전체횟수
+
+- 공리 : 더이상 의심할 수 없는 사실
+P{event} : 숫자 > 0
+TOTAL(P{event}) = 1
+P(E1 U E2) = P(E1) + P(E2)  (교집합이 없을 경우)
+
